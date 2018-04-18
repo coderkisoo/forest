@@ -144,8 +144,11 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
                         currentAngle += 360
                     }
                     var progress = (currentAngle / 360 * 100).toInt()
-                    if (mProgress > 75 && progress == 0) {
+                    if (mProgress > 75 && progress <= 10) {
                         progress = 100
+                    }
+                    if (mProgress < 25 && progress >= 90) {
+                        progress = 0
                     }
                     Log.d("progress", "progress " + progress)
 
