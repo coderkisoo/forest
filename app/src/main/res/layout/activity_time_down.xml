@@ -7,14 +7,12 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <cn.kisoo.forest.view.CircleWidget
+    <ImageView
         android:id="@+id/cw_widget"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
-        app:ring_radii="140dp"
-        app:ring_width="15dp" />
+        android:layout_marginTop="90dp"/>
 
     <TextView
         android:id="@+id/tv_direction"
@@ -24,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:textSize="25sp"
-        tools:text="120 分钟" />
+        tools:text="120:00" />
 
     <Button
         android:id="@+id/btn_start"
@@ -33,6 +31,6 @@
         android:layout_below="@+id/tv_direction"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="6dp"
-        android:text="开始" />
+        android:text="@string/cancel" />
 
 </RelativeLayout>

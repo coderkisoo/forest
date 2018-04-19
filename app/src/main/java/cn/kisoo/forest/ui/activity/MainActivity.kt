@@ -3,20 +3,29 @@ package cn.kisoo.forest.ui.activity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.widget.DrawerLayout
+import android.view.Gravity
+import android.view.View
 import android.view.Window
 import android.widget.FrameLayout
+import android.widget.ImageView
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.MainPresenter
+import cn.kisoo.forest.presenter.MainActivityPresenter
 import cn.kisoo.forest.ui.fragment.MainFragment
 import com.jude.beam.bijection.BeamAppCompatActivity
+import com.jude.beam.bijection.RequiresPresenter
 import rx.Observable
 
 /**
  * Created by kangqizhou on 2018/4/11.
  */
-class MainActivity : BeamAppCompatActivity<MainPresenter>() {
+@RequiresPresenter(MainActivityPresenter::class)
+class MainActivity : BeamAppCompatActivity<MainActivityPresenter>(), View.OnClickListener {
 
     var mFl_content: FrameLayout? = null
+    var mIv_award: ImageView? = null
+    var mIv_option: ImageView? = null
+    var mDl_container: DrawerLayout? = null
     val list = lazy { arrayListOf(MainFragment()) }.value
     var mCurrentFragment: Fragment? = null
 
@@ -28,8 +37,13 @@ class MainActivity : BeamAppCompatActivity<MainPresenter>() {
         selectFragment(0)
     }
 
+
     private fun initViews() {
         mFl_content = findViewById(R.id.fl_content) as FrameLayout?
+        mIv_award = findViewById(R.id.iv_award) as ImageView?
+        mIv_option = findViewById(R.id.iv_option) as ImageView?
+        mDl_container = findViewById(R.id.dl_container) as DrawerLayout?
+        mIv_option?.setOnClickListener(this)
     }
 
     private fun selectFragment(index: Int) {
@@ -59,5 +73,24 @@ class MainActivity : BeamAppCompatActivity<MainPresenter>() {
             transaction.add(R.id.fl_content, it)
         }
         return transaction
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.iv_option -> changeDrawerStatus()
+//            R.id.iv_award ->
+        }
+    }
+
+    private fun changeDrawerStatus() {
+        var isOpen = false
+        mDl_container?.let {
+            isOpen = mDl_container!!.isDrawerOpen(Gravity.START)
+        }
+        if (isOpen) {
+            mDl_container?.closeDrawer(Gravity.START)
+        } else {
+            mDl_container?.openDrawer(Gravity.START)
+        }
     }
 }

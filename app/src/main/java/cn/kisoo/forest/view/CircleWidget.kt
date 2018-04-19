@@ -21,8 +21,12 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
     val mBottomPaint = Paint()//画底部的圆环
     val mTopPaint = Paint()//画顶部圆环
     val mTopPointPaint = Paint()//顶部圆点
-    val mBottomColor = Color.GREEN//底部颜色
-    val mTopColor = Color.BLUE//顶部颜色
+    val mTopMinPaint = Paint()//画顶部圆环
+    val mTopMinPointPaint = Paint()//顶部圆点
+    var mBottomColor = Color.GREEN//底部颜色
+    var mTopColor = Color.BLUE//顶部颜色
+    var mMin_top_color = Color.YELLOW//顶部颜色
+    var mMinProgress = 13//顶部颜色
     var mProgress = 50//进度
     var mRingRadii = 100//圆环半径 -> 暂时未使用
     var mPointRadii = 40f//圆点半径
@@ -44,6 +48,10 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
         try {
             mRingRadii = ta.getDimensionPixelOffset(R.styleable.CircleWidget_ring_radii, 80)
             mRingWidth = ta.getDimensionPixelOffset(R.styleable.CircleWidget_ring_width, 10)
+            mTopColor = ta.getColor(R.styleable.CircleWidget_top_color, mTopColor)
+            mBottomColor = ta.getColor(R.styleable.CircleWidget_bottom_color, mBottomColor)
+            mMin_top_color = ta.getColor(R.styleable.CircleWidget_min_top_color, mMin_top_color)
+            mMinProgress = ta.getInteger(R.styleable.CircleWidget_min_progress, mMinProgress)
         } finally {
             ta.recycle()
         }
@@ -68,6 +76,17 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
         mTopPointPaint.flags = Paint.ANTI_ALIAS_FLAG
         mTopPointPaint.style = Paint.Style.FILL
 
+        mTopMinPaint.color = mMin_top_color
+        mTopMinPaint.isAntiAlias = true
+        mTopMinPaint.flags = Paint.ANTI_ALIAS_FLAG
+        mTopMinPaint.style = Paint.Style.STROKE
+        mTopMinPaint.strokeWidth = mRingWidth.toFloat()
+
+        mTopMinPointPaint.color = mMin_top_color
+        mTopMinPointPaint.isAntiAlias = true
+        mTopMinPointPaint.flags = Paint.ANTI_ALIAS_FLAG
+        mTopMinPointPaint.style = Paint.Style.FILL
+
         Logger.d(("${CircleWidget::class.java.name} ::paint init success "))
     }
 
@@ -76,13 +95,22 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
     }
 
     fun drawTopCircle(canvas: Canvas) {
-        canvas.drawArc(RectF(mRingWidth.toFloat(), mRingWidth.toFloat(), (canvas.width - mRingWidth).toFloat(), (canvas.height - mRingWidth).toFloat()), -90f, currentAngle(mProgress), false, mTopPaint)
+        if (mProgress < mMinProgress) {
+            canvas.drawArc(RectF(mRingWidth.toFloat(), mRingWidth.toFloat(), (canvas.width - mRingWidth).toFloat(), (canvas.height - mRingWidth).toFloat()), -90f, currentAngle(mProgress), false, mTopMinPaint)
+
+        } else {
+            canvas.drawArc(RectF(mRingWidth.toFloat(), mRingWidth.toFloat(), (canvas.width - mRingWidth).toFloat(), (canvas.height - mRingWidth).toFloat()), -90f, currentAngle(mProgress), false, mTopPaint)
+        }
     }
 
     private fun drawTopPoint(canvas: Canvas) {
         val currentXY = currentXY(Pair(canvas.width / 2, canvas.height / 2), canvas.width / 2 - mRingWidth, mProgress)
         mCurrentXY = currentXY
-        canvas.drawCircle(currentXY.first.toFloat(), currentXY.second.toFloat(), mPointRadii, mTopPointPaint)
+        if (mProgress < mMinProgress) {
+            canvas.drawCircle(currentXY.first.toFloat(), currentXY.second.toFloat(), mPointRadii, mTopMinPointPaint)
+        } else {
+            canvas.drawCircle(currentXY.first.toFloat(), currentXY.second.toFloat(), mPointRadii, mTopPointPaint)
+        }
     }
 
     /***
@@ -177,6 +205,10 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
 
     public interface ProgressListener {
         fun onProgress(progress: Int)
+    }
+
+    public fun setProgressListener(listener: ProgressListener) {
+        this.mProgressListener = listener
     }
 
 }
