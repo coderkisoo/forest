@@ -13,7 +13,7 @@
         android:layout_height="260dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
-        app:ring_radii="140dp"
+        app:ring_radii="110dp"
         app:ring_width="15dp" />
 
     <TextView

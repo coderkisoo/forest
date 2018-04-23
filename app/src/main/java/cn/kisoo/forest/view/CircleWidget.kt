@@ -91,20 +91,32 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
     }
 
     fun drawCircleRing(canvas: Canvas) {
-        canvas.drawArc(RectF(mRingWidth.toFloat(), mRingWidth.toFloat(), (canvas.width - mRingWidth).toFloat(), (canvas.height - mRingWidth).toFloat()), 0f, 360f, false, mBottomPaint)
+        canvas.drawArc(RectF((canvas.width / 2 - mRingRadii).toFloat(),
+                (canvas.height / 2 - mRingRadii).toFloat(),
+                (canvas.width / 2 + mRingRadii).toFloat(),
+                (canvas.height / 2 + mRingRadii).toFloat()),
+                0f, 360f, false, mBottomPaint)
     }
 
     fun drawTopCircle(canvas: Canvas) {
         if (mProgress < mMinProgress) {
-            canvas.drawArc(RectF(mRingWidth.toFloat(), mRingWidth.toFloat(), (canvas.width - mRingWidth).toFloat(), (canvas.height - mRingWidth).toFloat()), -90f, currentAngle(mProgress), false, mTopMinPaint)
+            canvas.drawArc(RectF((canvas.width / 2 - mRingRadii).toFloat(),
+                    (canvas.height / 2 - mRingRadii).toFloat(),
+                    (canvas.width / 2 + mRingRadii).toFloat(),
+                    (canvas.height / 2 + mRingRadii).toFloat()),
+                    -90f, currentAngle(mProgress), false, mTopMinPaint)
 
         } else {
-            canvas.drawArc(RectF(mRingWidth.toFloat(), mRingWidth.toFloat(), (canvas.width - mRingWidth).toFloat(), (canvas.height - mRingWidth).toFloat()), -90f, currentAngle(mProgress), false, mTopPaint)
+            canvas.drawArc(RectF((canvas.width / 2 - mRingRadii).toFloat(),
+                    (canvas.height / 2 - mRingRadii).toFloat(),
+                    (canvas.width / 2 + mRingRadii).toFloat(),
+                    (canvas.height / 2 + mRingRadii).toFloat()),
+                    -90f, currentAngle(mProgress), false, mTopPaint)
         }
     }
 
     private fun drawTopPoint(canvas: Canvas) {
-        val currentXY = currentXY(Pair(canvas.width / 2, canvas.height / 2), canvas.width / 2 - mRingWidth, mProgress)
+        val currentXY = currentXY(Pair(canvas.width / 2, canvas.height / 2), mRingRadii, mProgress)
         mCurrentXY = currentXY
         if (mProgress < mMinProgress) {
             canvas.drawCircle(currentXY.first.toFloat(), currentXY.second.toFloat(), mPointRadii, mTopMinPointPaint)
@@ -153,6 +165,11 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
         drawCircleRing(canvas)
         drawTopCircle(canvas)
         drawTopPoint(canvas)
+        drawCenterPicture(canvas)
+    }
+
+    private fun drawCenterPicture(canvas: Canvas) {
+
     }
 
 
