@@ -26,6 +26,7 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
     var mTopColor = Color.BLUE//顶部颜色
     var mMin_top_color = Color.YELLOW//顶部颜色
     var mMinProgress = 13//顶部颜色
+    var touchable = true
     var mProgress = 50//进度
     var mRingRadii = 100//圆环半径 -> 暂时未使用
     var mPic_padding = 10//圆环半径 -> 暂时未使用
@@ -36,6 +37,8 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
     var mHeight = 0
 
     var mProgressListener: ProgressListener? = null
+
+    var mCurrentPic = R.mipmap.pic_center_13_percent
 
     var mCurrentXY = Pair(0.0, 0.0)
 
@@ -53,6 +56,8 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
             mBottomColor = ta.getColor(R.styleable.CircleWidget_bottom_color, mBottomColor)
             mMin_top_color = ta.getColor(R.styleable.CircleWidget_min_top_color, mMin_top_color)
             mMinProgress = ta.getInteger(R.styleable.CircleWidget_min_progress, mMinProgress)
+            touchable = ta.getBoolean(R.styleable.CircleWidget_touchable, true)
+
         } finally {
             ta.recycle()
         }
@@ -174,18 +179,37 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
     }
 
     private fun drawCenterPicture(canvas: Canvas) {
-        mProgressListener?.let {
-            val bitmap = resources.getDrawable(it.currentPic(mProgress)).toBitmap()
-            val srcRectF = Rect(0,0, bitmap.width, bitmap.height)
-            val distRectF =  Rect(mPic_padding, mPic_padding, canvas.width-mPic_padding, canvas.height-mPic_padding)
-            canvas.drawBitmap(bitmap,srcRectF,distRectF,mPicPaint)
+        if (mProgressListener != null) {
+            val bitmap = resources.getDrawable(mProgressListener!!.currentPic(mProgress)).toBitmap()
+            val srcRectF = Rect(0, 0, bitmap.width, bitmap.height)
+            val distRectF = Rect(mPic_padding, mPic_padding, canvas.width - mPic_padding, canvas.height - mPic_padding)
+            canvas.drawBitmap(bitmap, srcRectF, distRectF, mPicPaint)
+        } else {
+            val bitmap = resources.getDrawable(mCurrentPic).toBitmap()
+            val srcRectF = Rect(0, 0, bitmap.width, bitmap.height)
+            val distRectF = Rect(mPic_padding, mPic_padding, canvas.width - mPic_padding, canvas.height - mPic_padding)
+            canvas.drawBitmap(bitmap, srcRectF, distRectF, mPicPaint)
         }
     }
 
 
     var mHandleTouchEvent = false
 
+    fun setProgress(progress: Int) {
+        this.mProgress = progress
+        postInvalidate()
+    }
+
+    fun setCurPicture(picture: Int) {
+        this.mCurrentPic = picture
+        postInvalidate()
+    }
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
+        if (!touchable) {
+            return false
+        }
+
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 //先判断点击区域处于圆点范围
@@ -232,7 +256,7 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
 
     public interface ProgressListener {
         fun onProgress(progress: Int)
-        fun currentPic(progress: Int):Int
+        fun currentPic(progress: Int): Int
     }
 
     public fun setProgressListener(listener: ProgressListener) {

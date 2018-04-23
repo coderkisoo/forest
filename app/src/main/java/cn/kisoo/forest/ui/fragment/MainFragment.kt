@@ -11,13 +11,14 @@ import android.widget.TextView
 import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.MainFragmentPresenter
 import cn.kisoo.forest.ui.activity.TimeDownActivity
+import cn.kisoo.forest.ui.iview.IMainFragmentView
 import cn.kisoo.forest.view.CircleWidget
 import com.jude.beam.bijection.BeamFragment
 import com.jude.beam.bijection.RequiresPresenter
 import com.orhanobut.logger.Logger
 
 @RequiresPresenter(MainFragmentPresenter::class)
-class MainFragment : BeamFragment<MainFragmentPresenter>(), CircleWidget.ProgressListener, View.OnClickListener {
+class MainFragment : BeamFragment<MainFragmentPresenter>(), CircleWidget.ProgressListener, View.OnClickListener, IMainFragmentView {
 
 
     var mRootView: View? = null

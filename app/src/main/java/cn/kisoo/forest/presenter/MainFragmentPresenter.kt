@@ -28,6 +28,8 @@ class MainFragmentPresenter : BeamBasePresenter<IMainFragmentView>() {
         val minutes = getDirection(mProgress)
         Logger.d("开始计时$minutes 分钟")
         intent.putExtra(TimeDownActivity.TIME_MINUTES,minutes)
+        intent.putExtra(TimeDownActivity.PIC_TYPE,view.currentPic(mProgress))
+        intent.putExtra(TimeDownActivity.PROGRESS,mProgress)
         startActivity(intent)
     }
 

@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008695">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/base_background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:textStyle="italic"
+        android:text="@string/motto_calm"
+        tools:text="120 分钟" />
 
     <cn.kisoo.forest.view.CircleWidget
         android:id="@+id/cw_widget"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="20dp"
         app:bottom_color="#6ADBE8"
         app:min_top_color="#FF939C"
-        app:ring_radii="120dp"
-        app:ring_width="15dp"
-        app:pic_padding="3dp"
+        app:pic_padding="0dp"
+        app:ring_radii="130dp"
+        app:ring_width="13dp"
         app:top_color="#006E7A" />
 
     <TextView
         android:id="@+id/tv_direction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cw_widget"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:textSize="28sp"
+        android:textStyle="bold"
         tools:text="120 分钟" />
 
     <Button
         android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_direction"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="6dp"
-        android:text="开始" />
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round_button"
+        android:text="@string/begin"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
-</RelativeLayout>
+</LinearLayout>

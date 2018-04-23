@@ -1,5 +1,5 @@
 package cn.kisoo.forest.ui.iview
 
-class IMainFragmentView{
-
+interface IMainFragmentView {
+    fun currentPic(progress: Int): Int
 }

@@ -14,6 +14,7 @@
         <attr name="bottom_color" format="color"/>
         <attr name="top_color" format="color"/>
         <attr name="min_progress" format="integer"/>
+        <attr name="touchable" format="boolean"/>
         <attr name="min_top_color" format="color"/>
     </declare-styleable>
 
