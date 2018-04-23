@@ -1,14 +1,12 @@
 package cn.kisoo.forest.view
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.RectF
+import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.graphics.drawable.toBitmap
 import cn.kisoo.forest.R
 import com.orhanobut.logger.Logger
 
@@ -19,6 +17,7 @@ import com.orhanobut.logger.Logger
 public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : View(context, attrs, defStyleAttr, defStyleRes) {
 
     val mBottomPaint = Paint()//画底部的圆环
+    val mPicPaint = Paint()//画图
     val mTopPaint = Paint()//画顶部圆环
     val mTopPointPaint = Paint()//顶部圆点
     val mTopMinPaint = Paint()//画顶部圆环
@@ -29,6 +28,7 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
     var mMinProgress = 13//顶部颜色
     var mProgress = 50//进度
     var mRingRadii = 100//圆环半径 -> 暂时未使用
+    var mPic_padding = 10//圆环半径 -> 暂时未使用
     var mPointRadii = 40f//圆点半径
     var mRingWidth = 10//圆环粗细程度
 
@@ -49,6 +49,7 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
             mRingRadii = ta.getDimensionPixelOffset(R.styleable.CircleWidget_ring_radii, 80)
             mRingWidth = ta.getDimensionPixelOffset(R.styleable.CircleWidget_ring_width, 10)
             mTopColor = ta.getColor(R.styleable.CircleWidget_top_color, mTopColor)
+            mPic_padding = ta.getDimensionPixelOffset(R.styleable.CircleWidget_pic_padding, 10)
             mBottomColor = ta.getColor(R.styleable.CircleWidget_bottom_color, mBottomColor)
             mMin_top_color = ta.getColor(R.styleable.CircleWidget_min_top_color, mMin_top_color)
             mMinProgress = ta.getInteger(R.styleable.CircleWidget_min_progress, mMinProgress)
@@ -86,6 +87,10 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
         mTopMinPointPaint.isAntiAlias = true
         mTopMinPointPaint.flags = Paint.ANTI_ALIAS_FLAG
         mTopMinPointPaint.style = Paint.Style.FILL
+
+        mPicPaint.flags = Paint.ANTI_ALIAS_FLAG
+        mPicPaint.style = Paint.Style.STROKE
+
 
         Logger.d(("${CircleWidget::class.java.name} ::paint init success "))
     }
@@ -162,14 +167,19 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
             mOriginXY = Pair(canvas.width / 2, canvas.height / 2)
             mHeight = canvas.height
         }
+        drawCenterPicture(canvas)
         drawCircleRing(canvas)
         drawTopCircle(canvas)
         drawTopPoint(canvas)
-        drawCenterPicture(canvas)
     }
 
     private fun drawCenterPicture(canvas: Canvas) {
-
+        mProgressListener?.let {
+            val bitmap = resources.getDrawable(it.currentPic(mProgress)).toBitmap()
+            val srcRectF = Rect(0,0, bitmap.width, bitmap.height)
+            val distRectF =  Rect(mPic_padding, mPic_padding, canvas.width-mPic_padding, canvas.height-mPic_padding)
+            canvas.drawBitmap(bitmap,srcRectF,distRectF,mPicPaint)
+        }
     }
 
 
@@ -222,6 +232,7 @@ public class CircleWidget(context: Context, attrs: AttributeSet?, defStyleAttr: 
 
     public interface ProgressListener {
         fun onProgress(progress: Int)
+        fun currentPic(progress: Int):Int
     }
 
     public fun setProgressListener(listener: ProgressListener) {

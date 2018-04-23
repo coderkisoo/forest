@@ -5,16 +5,20 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#008695">
 
     <cn.kisoo.forest.view.CircleWidget
         android:id="@+id/cw_widget"
-        android:layout_width="260dp"
-        android:layout_height="260dp"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp"
-        app:ring_radii="110dp"
-        app:ring_width="15dp" />
+        app:bottom_color="#6ADBE8"
+        app:min_top_color="#FF939C"
+        app:ring_radii="120dp"
+        app:ring_width="15dp"
+        app:pic_padding="3dp"
+        app:top_color="#006E7A" />
 
     <TextView
         android:id="@+id/tv_direction"

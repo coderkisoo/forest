@@ -10,6 +10,7 @@
     <declare-styleable name="CircleWidget">
         <attr name="ring_radii" format="dimension"/>
         <attr name="ring_width" format="dimension"/>
+        <attr name="pic_padding" format="dimension"/>
         <attr name="bottom_color" format="color"/>
         <attr name="top_color" format="color"/>
         <attr name="min_progress" format="integer"/>

@@ -19,6 +19,7 @@ import com.orhanobut.logger.Logger
 @RequiresPresenter(MainFragmentPresenter::class)
 class MainFragment : BeamFragment<MainFragmentPresenter>(), CircleWidget.ProgressListener, View.OnClickListener {
 
+
     var mRootView: View? = null
     var mCw_widget: CircleWidget? = null
     var mTv_direction: TextView? = null
@@ -49,6 +50,18 @@ class MainFragment : BeamFragment<MainFragmentPresenter>(), CircleWidget.Progres
     override fun onClick(view: View) {
         when (view.id) {
             R.id.btn_start -> presenter.startTiming(Intent(activity, TimeDownActivity::class.java))
+        }
+    }
+
+    override fun currentPic(progress: Int): Int {
+        if (progress <= 13) {
+            return R.mipmap.pic_center_13_percent
+        } else if (progress <= 40) {
+            return R.mipmap.pic_center_40_percent
+        } else if (progress <= 75) {
+            return R.mipmap.pic_center_75_percent
+        } else {
+            return R.mipmap.pic_center_100_percent
         }
     }
 
