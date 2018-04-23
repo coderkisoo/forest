@@ -3,7 +3,6 @@
     <string name="setting">设置</string>
     <string name="main_page">主页面</string>
     <string name="minute">分钟</string>
-    <string name="cancel">取消</string>
     <string name="accessibility_service_description">这个辅助功能是为了检测屏幕变化，不会收集不必要的数据</string>
     <string name="begin">开始</string>
     <string name="motto_calm">Keep Calm and Carry On.</string>
