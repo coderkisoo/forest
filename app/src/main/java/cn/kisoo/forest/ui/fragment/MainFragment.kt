@@ -26,7 +26,7 @@ class MainFragment : BeamFragment<MainFragmentPresenter>(), CircleWidget.Progres
     var mTv_direction: TextView? = null
     var mBtn_start: Button? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         initViews(inflater, container)
         return mRootView
     }

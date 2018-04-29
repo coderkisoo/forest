@@ -16,7 +16,7 @@
         android:layout_marginTop="90dp"
         app:bottom_color="#6ADBE8"
         app:min_top_color="#FF939C"
-        app:pic_padding="0dp"
+        app:pic_padding="-1dp"
         app:ring_radii="130dp"
         app:ring_width="13dp"
         app:top_color="#006E7A"

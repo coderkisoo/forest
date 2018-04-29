@@ -5,33 +5,22 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/base_background"
     android:gravity="center_horizontal"
-    android:background="@color/base_background">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:textColor="#ffffff"
-        android:textSize="22sp"
-        android:textStyle="italic"
-        android:text="@string/motto_calm"
-        tools:text="120 分钟" />
+    android:orientation="vertical">
 
     <cn.kisoo.forest.view.CircleWidget
         android:id="@+id/cw_widget"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="90dp"
         app:bottom_color="#6ADBE8"
         app:min_top_color="#FF939C"
         app:pic_padding="-1dp"
         app:ring_radii="130dp"
         app:ring_width="13dp"
-        app:top_color="#006E7A" />
+        app:top_color="#006E7A"
+        app:touchable="false" />
 
     <TextView
         android:id="@+id/tv_direction"
@@ -39,17 +28,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="#ffffff"
-        android:textSize="28sp"
+        android:textSize="24sp"
+        android:padding="10dp"
         android:textStyle="bold"
-        tools:text="120 分钟" />
+
+        tools:text="因为你的没有坚持，小乌鸦渴死了" />
 
     <Button
-        android:id="@+id/btn_start"
+        android:id="@+id/btn_do_next"
         android:layout_width="120dp"
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/round_button"
-        android:text="@string/begin"
+        android:text="@string/do_next"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
 

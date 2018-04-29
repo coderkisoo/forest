@@ -7,4 +7,10 @@
     <string name="begin">开始</string>
     <string name="motto_calm">Keep Calm and Carry On.</string>
     <string name="cancel">取消</string>
+    <string name="hint">提示</string>
+    <string name="text_positive">去意已决</string>
+    <string name="text_cancel">容我想想</string>
+    <string name="cancel_timedown_dialog_message">如果现在停止，乌鸦就会因为没水喝而渴死，望三思！</string>
+    <string name="cancel_result">如果现在停止，乌鸦就会因为没水喝而渴死，望三思！</string>
+    <string name="do_next">下次再说</string>
 </resources>

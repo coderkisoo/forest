@@ -6,21 +6,20 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v4.widget.DrawerLayout
 import android.view.Gravity
 import android.view.View
-import android.view.Window
 import android.widget.FrameLayout
 import android.widget.ImageView
 import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.MainActivityPresenter
+import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.fragment.MainFragment
-import com.jude.beam.bijection.BeamAppCompatActivity
 import com.jude.beam.bijection.RequiresPresenter
-import rx.Observable
+import io.reactivex.Observable
 
 /**
  * Created by kangqizhou on 2018/4/11.
  */
 @RequiresPresenter(MainActivityPresenter::class)
-class MainActivity : BeamAppCompatActivity<MainActivityPresenter>(), View.OnClickListener {
+class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener {
 
     var mFl_content: FrameLayout? = null
     var mIv_award: ImageView? = null
@@ -31,7 +30,6 @@ class MainActivity : BeamAppCompatActivity<MainActivityPresenter>(), View.OnClic
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_main)
         initViews()
         selectFragment(0)
@@ -54,7 +52,7 @@ class MainActivity : BeamAppCompatActivity<MainActivityPresenter>(), View.OnClic
                 .map { transaction ->
                     hideCurrentFragment(transaction)
                 }
-                .doOnCompleted { mCurrentFragment = list[index] }
+                .doOnComplete { mCurrentFragment = list[index] }
                 .subscribe({ transition -> transition?.commitNowAllowingStateLoss() })
     }
 

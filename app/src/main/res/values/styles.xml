@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/base_background</item>
         <item name="colorPrimaryDark">@color/base_background</item>
         <item name="colorAccent">@color/base_background</item>
+        <item name="android:windowBackground">@color/base_background</item>
     </style>
     <declare-styleable name="CircleWidget">
         <attr name="ring_radii" format="dimension"/>
