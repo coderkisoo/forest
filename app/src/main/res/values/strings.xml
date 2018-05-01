@@ -21,8 +21,9 @@
     <string name="register">注册</string>
     <string name="go_login">已有账号，去登录</string>
     <string name="go_register">没有账号，去注册</string>
-    <string name="please_input_school_num">请输入学号</string>
-    <string name="please_input_account">请输入账号</string>
-    <string name="please_input_pwd">请输入密码</string>
-    <string name="please_input_name">请输入昵称</string>
+    <string name="please_input_school_num">学号</string>
+    <string name="please_input_account">账号</string>
+    <string name="please_input_pwd">密码</string>
+    <string name="please_input_pwd2">确认密码</string>
+    <string name="please_input_name">昵称</string>
 </resources>

@@ -1,5 +1,7 @@
 package cn.kisoo.forest.ui.iview
 
-interface ILoginView{
+import android.content.Context
 
+interface ILoginView{
+    fun getContext(): Context
 }

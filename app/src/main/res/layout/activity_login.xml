@@ -20,32 +20,43 @@
         android:src="@mipmap/pic_center_100_percent" />
 
     <EditText
+        android:id="@+id/et_account"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/edit_back"
+        android:background="@drawable/white_edit_background"
         android:drawableLeft="@mipmap/account"
-        android:hint="请输入账号"
-        android:inputType="textPassword"
+        android:drawablePadding="4dp"
+        android:hint="@string/please_input_account"
+        android:imeOptions="actionNext"
+        android:maxLines="1"
+        android:nextFocusForward="@+id/et_password"
         android:padding="6dp"
+        android:singleLine="true"
         android:textColor="#ffffff"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        android:textCursorDrawable="@drawable/white_edit_cursor" />
 
     <EditText
+        android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/edit_back"
+        android:background="@drawable/white_edit_background"
         android:drawableLeft="@mipmap/password"
-        android:hint="请输入密码"
+        android:drawablePadding="4dp"
+        android:hint="@string/please_input_pwd"
         android:inputType="textPassword"
+        android:maxLines="1"
         android:padding="6dp"
+        android:singleLine="true"
         android:textColor="#ffffff"
-        android:textColorHint="#FFFFFF" />
+        android:textColorHint="#FFFFFF"
+        android:textCursorDrawable="@drawable/white_edit_cursor" />
 
     <TextView
         android:id="@+id/tv_register"
