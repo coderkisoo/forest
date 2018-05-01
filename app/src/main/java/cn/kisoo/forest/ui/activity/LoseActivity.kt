@@ -1,6 +1,7 @@
 package cn.kisoo.forest.ui.activity
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -34,4 +35,12 @@ class LoseActivity : ResultActivity<LoseActivityPresenter>(), View.OnClickListen
         mCwWidget?.setProgress(mSuccessDuration / mTotalDuration)
         mCwWidget?.setCurPicture(if (mIfSuccess) R.mipmap.pic_center_success else R.mipmap.pic_center_died)
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> presenter.finishLosePage()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }

@@ -17,4 +17,12 @@
     <string name="bird_died">因为你的半途而废，小乌鸦渴死了</string>
     <string name="option">选项</string>
     <string name="award">成就</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="go_login">已有账号，去登录</string>
+    <string name="go_register">没有账号，去注册</string>
+    <string name="please_input_school_num">请输入学号</string>
+    <string name="please_input_account">请输入账号</string>
+    <string name="please_input_pwd">请输入密码</string>
+    <string name="please_input_name">请输入昵称</string>
 </resources>
