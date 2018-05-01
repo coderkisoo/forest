@@ -20,23 +20,10 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/tl_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:navigationIcon="@mipmap/option"
+                app:navigationContentDescription="@string/option">
 
-                <ImageView
-                    android:id="@+id/iv_option"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:padding="6dp"
-                    android:src="@mipmap/option" />
-
-                <ImageView
-                    android:id="@+id/iv_award"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="6dp"
-                    android:padding="6dp"
-                    android:src="@mipmap/award" />
             </android.support.v7.widget.Toolbar>
 
             <FrameLayout

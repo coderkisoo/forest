@@ -9,11 +9,32 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tl_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@mipmap/back">
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/tv_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:text="成功时长占比：24%" />
+
     <cn.kisoo.forest.view.CircleWidget
         android:id="@+id/cw_widget"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="20dp"
         app:bottom_color="#6ADBE8"
         app:min_top_color="#FF939C"
         app:pic_padding="-1dp"
@@ -27,12 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="@string/bird_died"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        android:padding="10dp"
-        android:textStyle="bold"
-
-        tools:text="因为你的没有坚持，小乌鸦渴死了" />
+        tools:text="@string/bird_died" />
 
     <Button
         android:id="@+id/btn_do_next"

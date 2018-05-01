@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.widget.DrawerLayout
+import android.support.v7.widget.Toolbar
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.ImageView
+import androidx.core.widget.toast
 import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.MainActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
@@ -21,10 +24,9 @@ import io.reactivex.Observable
 @RequiresPresenter(MainActivityPresenter::class)
 class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener {
 
-    var mFl_content: FrameLayout? = null
-    var mIv_award: ImageView? = null
-    var mIv_option: ImageView? = null
-    var mDl_container: DrawerLayout? = null
+    var mFlContent: FrameLayout? = null
+    var mTlTitle: Toolbar? = null
+    var mDlContainer: DrawerLayout? = null
     val list = lazy { arrayListOf(MainFragment()) }.value
     var mCurrentFragment: Fragment? = null
 
@@ -37,11 +39,16 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
 
 
     private fun initViews() {
-        mFl_content = findViewById(R.id.fl_content) as FrameLayout?
-        mIv_award = findViewById(R.id.iv_award) as ImageView?
-        mIv_option = findViewById(R.id.iv_option) as ImageView?
-        mDl_container = findViewById(R.id.dl_container) as DrawerLayout?
-        mIv_option?.setOnClickListener(this)
+        mFlContent = findViewById(R.id.fl_content)
+        mDlContainer = findViewById(R.id.dl_container)
+        mTlTitle = findViewById(R.id.tl_title)
+        setSupportActionBar(mTlTitle)
+        title = ""
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_award,menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     private fun selectFragment(index: Int) {
@@ -74,21 +81,30 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
     }
 
     override fun onClick(view: View) {
-        when (view.id) {
-            R.id.iv_option -> changeDrawerStatus()
-//            R.id.iv_award ->
-        }
+
     }
 
     private fun changeDrawerStatus() {
         var isOpen = false
-        mDl_container?.let {
-            isOpen = mDl_container!!.isDrawerOpen(Gravity.START)
+        mDlContainer?.let {
+            isOpen = mDlContainer!!.isDrawerOpen(Gravity.START)
         }
         if (isOpen) {
-            mDl_container?.closeDrawer(Gravity.START)
+            mDlContainer?.closeDrawer(Gravity.START)
         } else {
-            mDl_container?.openDrawer(Gravity.START)
+            mDlContainer?.openDrawer(Gravity.START)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> changeDrawerStatus()
+            R.id.menu_award -> showAward()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun showAward() {
+        toast("award")
     }
 }

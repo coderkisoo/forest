@@ -13,4 +13,8 @@
     <string name="cancel_timedown_dialog_message">如果现在停止，乌鸦就会因为没水喝而渴死，望三思！</string>
     <string name="cancel_result">如果现在停止，乌鸦就会因为没水喝而渴死，望三思！</string>
     <string name="do_next">下次再说</string>
+    <string name="success_percent">成功时长占比%1$d%%</string>
+    <string name="bird_died">因为你的半途而废，小乌鸦渴死了</string>
+    <string name="option">选项</string>
+    <string name="award">成就</string>
 </resources>
