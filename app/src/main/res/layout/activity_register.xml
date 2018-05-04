@@ -15,11 +15,11 @@
 
     <ImageView
         android:id="@+id/iv_head"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
-        android:src="@mipmap/pic_center_100_percent" />
+        android:layout_marginTop="20dp"
+        android:src="@mipmap/head_1" />
 
     <EditText
         android:id="@+id/et_name"
@@ -27,7 +27,7 @@
         android:layout_height="48dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/white_edit_background"
         android:drawableLeft="@mipmap/name"
         android:drawablePadding="4dp"
