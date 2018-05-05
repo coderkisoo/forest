@@ -30,6 +30,10 @@
 
         <service android:name=".service.UploadService" />
 
+        <activity android:name=".ui.activity.UpdateNameActivity" />
+        <activity android:name=".ui.activity.UpdatePasswordActivity" />
+        <activity android:name=".ui.activity.UpdateSchoolNumActivity" />
+
     </application>
 
 

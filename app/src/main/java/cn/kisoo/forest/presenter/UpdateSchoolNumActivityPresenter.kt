@@ -5,4 +5,9 @@ import com.jude.beam.bijection.Presenter
 
 class UpdateSchoolNumActivityPresenter : Presenter<IUpdateSchoolNumActivityView>() {
 
+    fun confirmSchoolNumUpdate(schoolNum: String) {
+
+
+    }
+
 }

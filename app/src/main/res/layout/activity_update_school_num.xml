@@ -21,12 +21,13 @@
         android:theme="@style/TextInputLayout">
 
         <EditText
+            android:id="@+id/et_school_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:drawableLeft="@mipmap/name"
-            android:drawablePadding="4dp"
+            android:drawablePadding="8dp"
             android:hint="@string/please_input_school_num"
             android:singleLine="true"
             android:textColor="#FFFFFF"
