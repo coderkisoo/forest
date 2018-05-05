@@ -1,6 +1,5 @@
 package cn.kisoo.forest.ui.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import cn.kisoo.forest.R
@@ -21,11 +20,6 @@ class UpdateSchoolNumActivity : BaseActivity<UpdateSchoolNumActivityPresenter>()
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_confirm, menu)
         return super.onCreateOptionsMenu(menu)
-    }
-
-
-    override fun getContext(): Context {
-        return this
     }
 
 }

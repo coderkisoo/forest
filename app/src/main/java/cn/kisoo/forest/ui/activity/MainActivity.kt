@@ -1,6 +1,5 @@
 package cn.kisoo.forest.ui.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -118,7 +117,4 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         toast("award")
     }
 
-    override fun getContext(): Context {
-        return this
-    }
 }

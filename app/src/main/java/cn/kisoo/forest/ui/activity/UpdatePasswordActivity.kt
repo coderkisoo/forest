@@ -3,24 +3,25 @@ package cn.kisoo.forest.ui.activity
 import android.os.Bundle
 import android.view.Menu
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.UpdateNameActivityPresenter
+import cn.kisoo.forest.presenter.UpdatePasswordActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.IUpdateNameActivityView
+import cn.kisoo.forest.ui.iview.IUpdatePasswordActivityView
 import com.jude.beam.bijection.RequiresPresenter
 
-@RequiresPresenter(UpdateNameActivityPresenter::class)
-class UpdateNameActivity : BaseActivity<UpdateNameActivityPresenter>(), IUpdateNameActivityView {
+@RequiresPresenter(UpdatePasswordActivityPresenter::class)
+class UpdatePasswordActivity : BaseActivity<UpdatePasswordActivityPresenter>(), IUpdatePasswordActivityView {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_update_name)
+        setContentView(R.layout.activity_update_school_num)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_confirm, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
 
 
 }

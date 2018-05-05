@@ -12,12 +12,13 @@ import androidx.core.widget.toast
 import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.TimeDownActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
+import cn.kisoo.forest.ui.iview.ITimeDownActivityView
 import cn.kisoo.forest.view.CircleWidget
 import com.jude.beam.bijection.RequiresPresenter
 import com.orhanobut.logger.Logger
 
 @RequiresPresenter(TimeDownActivityPresenter::class)
-class TimeDownActivity : BaseActivity<TimeDownActivityPresenter>(), TimeDownActivityPresenter.TimeDownTimer.TimeDownListener, View.OnClickListener {
+class TimeDownActivity : BaseActivity<TimeDownActivityPresenter>(), TimeDownActivityPresenter.TimeDownTimer.TimeDownListener, View.OnClickListener , ITimeDownActivityView {
 
     companion object {
         @JvmStatic

@@ -31,4 +31,6 @@
     <string name="school_timetables">课程表</string>
     <string name="user_info">个人信息</string>
     <string name="confirm">确认</string>
+    <string name="old_password">原密码</string>
+    <string name="new_password">新密码</string>
 </resources>

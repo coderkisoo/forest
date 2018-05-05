@@ -1,6 +1,5 @@
 package cn.kisoo.forest.ui.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
@@ -68,11 +67,6 @@ class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClick
                 presenter.selectHead(headType)
             }
         })
-    }
-
-
-    override fun getContext(): Context {
-        return this
     }
 
     override fun setHead(headRes: Int) {

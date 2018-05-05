@@ -1,6 +1,5 @@
 package cn.kisoo.forest.ui.activity
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -36,10 +35,6 @@ class LoginActivity : BaseActivity<LoginActivityPresenter>(), View.OnClickListen
         when (v.id) {
             R.id.tv_register -> presenter.goRegister()
         }
-    }
-
-    override fun getContext(): Context {
-        return this
     }
 
 }
