@@ -14,7 +14,7 @@ class UpdatePasswordActivity : BaseActivity<UpdatePasswordActivityPresenter>(), 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_update_school_num)
+        setContentView(R.layout.activity_update_password)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -11,7 +11,7 @@ import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.RegisterActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.iview.IRegisterActivityView
-import cn.kisoo.forest.util.HeadSelector
+import cn.kisoo.forest.util.HeadSelectorUtil
 import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(RegisterActivityPresenter::class)
@@ -62,7 +62,7 @@ class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClick
     }
 
     private fun showHeadSelector() {
-        HeadSelector.selectHead(this, object : HeadSelector.HeadSelector {
+        HeadSelectorUtil.selectHead(this, object : HeadSelectorUtil.HeadSelector {
             override fun onHeadSelect(headType: Int) {
                 presenter.selectHead(headType)
             }
