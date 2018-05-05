@@ -86,9 +86,9 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
     }
 
     override fun onClick(view: View) {
-when(view.id){
-    R.id.rl_headview -> presenter.updateUser()
-}
+        when (view.id) {
+            R.id.rl_headview -> presenter.updateUser()
+        }
     }
 
     private fun changeDrawerStatus() {

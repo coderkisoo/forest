@@ -1,5 +1,5 @@
 package cn.kisoo.forest.ui.iview
 
-interface IUserActivityView{
+interface IUserActivityView : IBaseActivityView {
 
 }
