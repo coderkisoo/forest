@@ -9,15 +9,39 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/base_background</item>
     </style>
+
+    <style name="WhiteBackgroundEditText" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+    <style name="TextInputLayout" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+
     <declare-styleable name="CircleWidget">
-        <attr name="ring_radii" format="dimension"/>
-        <attr name="ring_width" format="dimension"/>
-        <attr name="pic_padding" format="dimension"/>
-        <attr name="bottom_color" format="color"/>
-        <attr name="top_color" format="color"/>
-        <attr name="min_progress" format="integer"/>
-        <attr name="touchable" format="boolean"/>
-        <attr name="min_top_color" format="color"/>
+        <attr name="ring_radii" format="dimension" />
+        <attr name="ring_width" format="dimension" />
+        <attr name="pic_padding" format="dimension" />
+        <attr name="bottom_color" format="color" />
+        <attr name="top_color" format="color" />
+        <attr name="min_progress" format="integer" />
+        <attr name="touchable" format="boolean" />
+        <attr name="min_top_color" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="ImageViewWithCorner">
+        <attr name="corner_width" format="dimension" />
+        <attr name="corner_height" format="dimension" />
+        <attr name="corner_margin_right" format="dimension" />
+    </declare-styleable>
+
 
 </resources>

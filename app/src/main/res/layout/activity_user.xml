@@ -9,16 +9,66 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/base_background"
         app:navigationIcon="@mipmap/back"
         app:title="@string/user_info"
         app:titleTextColor="#FFFFFF" />
 
-    <ImageView
+    <RelativeLayout
         android:id="@+id/iv_head"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:src="@mipmap/head_1" />
+        android:background="@mipmap/head_1">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="6dp"
+            android:src="@mipmap/down" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/textview_ripple"
+        android:drawableRight="@mipmap/update"
+        android:padding="10dp"
+        android:paddingLeft="16dp"
+        android:text="昵称： 桥寻"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/textview_ripple"
+        android:drawableRight="@mipmap/update"
+        android:padding="10dp"
+        android:paddingLeft="16dp"
+        android:text="学号： 2014214038"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/textview_ripple"
+        android:drawableRight="@mipmap/right"
+        android:padding="10dp"
+        android:paddingLeft="16dp"
+        android:text="密码修改"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
 
 </LinearLayout>

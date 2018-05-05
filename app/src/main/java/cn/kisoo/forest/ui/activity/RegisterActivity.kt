@@ -1,20 +1,22 @@
 package cn.kisoo.forest.ui.activity
 
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.RegisterActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.iview.IRegisterActivityView
-import cn.kisoo.forest.ui.window.HeadSelectorAdapter
+import cn.kisoo.forest.util.HeadSelector
 import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(RegisterActivityPresenter::class)
-class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClickListener, IRegisterActivityView, AdapterView.OnItemClickListener, DialogInterface.OnClickListener {
+class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClickListener, IRegisterActivityView {
 
 
     var mIVHead: ImageView? = null
@@ -61,36 +63,16 @@ class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClick
     }
 
     private fun showHeadSelector() {
-
-        val view = layoutInflater.inflate(R.layout.head_selector, null)
-        val gridView = view.findViewById(R.id.gv_head_list) as GridView
-        gridView.adapter = HeadSelectorAdapter(presenter.mHeadList)
-        gridView.onItemClickListener = this
-        mCurrentDialog = AlertDialog.Builder(this)
-                .setNegativeButton(R.string.cancel, this)
-                .setView(view)
-                .create()
-        mCurrentDialog?.show()
-//        val layoutParams = mCurrentDialog?.window?.attributes
-//        layoutParams?.height = DpConvertUtil.dip2px(this, 400f)
-//        mCurrentDialog?.window?.attributes = layoutParams
+        HeadSelector.selectHead(this, object : HeadSelector.HeadSelector {
+            override fun onHeadSelect(headType: Int) {
+                presenter.selectHead(headType)
+            }
+        })
     }
-//        AlertDialog.Builder(this)
-//                .setView()
 
 
     override fun getContext(): Context {
         return this
-    }
-
-
-    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        presenter.selectHead(position)
-        mCurrentDialog?.dismiss()
-    }
-
-    override fun onClick(dialog: DialogInterface?, which: Int) {
-        dialog?.dismiss()
     }
 
     override fun setHead(headRes: Int) {

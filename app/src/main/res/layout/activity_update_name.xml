@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/base_background"
+        app:navigationIcon="@mipmap/back"
+        app:title="@string/user_info"
+        app:titleTextColor="#FFFFFF" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:theme="@style/TextInputLayout"
+        android:textColorHint="#FFFFFF">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:drawableLeft="@mipmap/name"
+            android:drawablePadding="4dp"
+            android:hint="@string/please_input_name"
+            android:singleLine="true"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textCursorDrawable="@drawable/white_cursor"
+            android:theme="@style/WhiteBackgroundEditText"
+            android:textSize="22sp" />
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>

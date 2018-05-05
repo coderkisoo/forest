@@ -1,5 +1,6 @@
 package cn.kisoo.forest.ui.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
@@ -16,6 +17,7 @@ import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.MainActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.fragment.MainFragment
+import cn.kisoo.forest.ui.iview.IMainActivityView
 import com.jude.beam.bijection.RequiresPresenter
 import io.reactivex.Observable
 
@@ -23,7 +25,8 @@ import io.reactivex.Observable
  * Created by kangqizhou on 2018/4/11.
  */
 @RequiresPresenter(MainActivityPresenter::class)
-class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener {
+class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener ,IMainActivityView{
+
 
     var mFlContent: FrameLayout? = null
     var mTlTitle: Toolbar? = null
@@ -113,5 +116,9 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
 
     private fun showAward() {
         toast("award")
+    }
+
+    override fun getContext(): Context {
+        return this
     }
 }

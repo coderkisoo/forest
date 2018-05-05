@@ -5,5 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="circle_color_bottom">#94c56b</color>
     <color name="base_background">#008695</color>
+    <color name="light_color">#178f9c</color>
+    <color name="more_light_color">#19a4b3</color>
     <color name="text_color">#ffffff</color>
+    <color name="white">#FFFFFF</color>
 </resources>
