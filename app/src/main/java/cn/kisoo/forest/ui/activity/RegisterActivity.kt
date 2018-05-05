@@ -9,12 +9,12 @@ import android.widget.*
 import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.RegisterActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.IRegisterView
+import cn.kisoo.forest.ui.iview.IRegisterActivityView
 import cn.kisoo.forest.ui.window.HeadSelectorAdapter
 import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(RegisterActivityPresenter::class)
-class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClickListener, IRegisterView, AdapterView.OnItemClickListener, DialogInterface.OnClickListener {
+class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClickListener, IRegisterActivityView, AdapterView.OnItemClickListener, DialogInterface.OnClickListener {
 
 
     var mIVHead: ImageView? = null

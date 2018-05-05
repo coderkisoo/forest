@@ -2,10 +2,10 @@ package cn.kisoo.forest.presenter
 
 import android.content.Intent
 import cn.kisoo.forest.ui.activity.RegisterActivity
-import cn.kisoo.forest.ui.iview.ILoginView
+import cn.kisoo.forest.ui.iview.ILoginActivityView
 import com.jude.beam.bijection.Presenter
 
-class LoginActivityPresenter : Presenter<ILoginView>() {
+class LoginActivityPresenter : Presenter<ILoginActivityView>() {
 
     fun goRegister() {
         val intent = Intent()

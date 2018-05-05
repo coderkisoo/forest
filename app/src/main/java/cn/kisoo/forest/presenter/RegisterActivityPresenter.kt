@@ -3,11 +3,11 @@ package cn.kisoo.forest.presenter
 import android.content.Intent
 import cn.kisoo.forest.R
 import cn.kisoo.forest.ui.activity.LoginActivity
-import cn.kisoo.forest.ui.iview.IRegisterView
+import cn.kisoo.forest.ui.iview.IRegisterActivityView
 import cn.kisoo.forest.util.ToastUtils
 import com.jude.beam.bijection.Presenter
 
-class RegisterActivityPresenter : Presenter<IRegisterView>() {
+class RegisterActivityPresenter : Presenter<IRegisterActivityView>() {
 
     val mHeadList = arrayOf(R.mipmap.head_1, R.mipmap.head_2, R.mipmap.head_3, R.mipmap.head_4,
             R.mipmap.head_5, R.mipmap.head_6, R.mipmap.head_7, R.mipmap.head_8)

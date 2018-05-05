@@ -8,11 +8,11 @@ import android.widget.TextView
 import cn.kisoo.forest.R
 import cn.kisoo.forest.presenter.LoginActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.ILoginView
+import cn.kisoo.forest.ui.iview.ILoginActivityView
 import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(LoginActivityPresenter::class)
-class LoginActivity : BaseActivity<LoginActivityPresenter>(), View.OnClickListener, ILoginView {
+class LoginActivity : BaseActivity<LoginActivityPresenter>(), View.OnClickListener, ILoginActivityView {
 
 
     var mTVRegister: TextView? = null

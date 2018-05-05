@@ -2,6 +2,10 @@ package cn.kisoo.forest.ui.iview
 
 import android.content.Context
 
-interface ILoginView{
+interface IBaseActivityView {
     fun getContext(): Context
+
+    fun finish()
+
+
 }
