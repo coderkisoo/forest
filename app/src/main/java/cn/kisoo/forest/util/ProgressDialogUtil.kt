@@ -1,8 +1,15 @@
 package cn.kisoo.forest.util
 
+import android.app.ProgressDialog
+import android.content.Context
+
 object ProgressDialogUtil {
 
-    fun showProgressDialog() {
+    var progressDialog: ProgressDialog? = null
 
+    fun showProgressDialog(context: Context, title: String, message: String) {
+        progressDialog = ProgressDialog.show(context, title, message)
     }
+
+    fun dissmissDialog() = progressDialog?.dismiss()
 }
