@@ -1,6 +1,7 @@
 package cn.kisoo.forest.ui.activity
 
 import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.widget.DrawerLayout
@@ -29,6 +30,7 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
     var mDlContainer: DrawerLayout? = null
     val list = lazy { arrayListOf(MainFragment()) }.value
     var mCurrentFragment: Fragment? = null
+    var mNavigationView: NavigationView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,12 +44,15 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         mFlContent = findViewById(R.id.fl_content)
         mDlContainer = findViewById(R.id.dl_container)
         mTlTitle = findViewById(R.id.tl_title)
+        mNavigationView = findViewById(R.id.nv_drawer)
+        val view = mNavigationView?.getHeaderView(0)
+        view?.findViewById<View>(R.id.rl_headview)?.setOnClickListener(this)
         setSupportActionBar(mTlTitle)
         title = ""
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_award,menu)
+        menuInflater.inflate(R.menu.menu_award, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -81,7 +86,9 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
     }
 
     override fun onClick(view: View) {
-
+when(view.id){
+    R.id.rl_headview -> presenter.updateUser()
+}
     }
 
     private fun changeDrawerStatus() {

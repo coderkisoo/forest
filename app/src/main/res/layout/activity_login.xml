@@ -37,7 +37,7 @@
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:textCursorDrawable="@drawable/white_edit_cursor" />
+        android:textCursorDrawable="@drawable/white_cursor" />
 
     <EditText
         android:id="@+id/et_password"
@@ -56,7 +56,7 @@
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:textCursorDrawable="@drawable/white_edit_cursor" />
+        android:textCursorDrawable="@drawable/white_cursor" />
 
     <TextView
         android:id="@+id/tv_register"

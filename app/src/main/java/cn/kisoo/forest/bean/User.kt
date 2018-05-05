@@ -5,32 +5,32 @@ import java.util.*
 
 class User {
 
-    private val uId: Int? = null  //id
+    var uId: Int? = null  //id
 
-    private val uUsername: String? = null  //用户名
+    var uUsername: String? = null  //用户名
 
-    private val uPassword: String? = null  //密码密文
-
-
-    private val uPwdsalt: String? = null  //随机盐
+    var uPassword: String? = null  //密码密文
 
 
-    private val uPicture: String? = null  //图片
+    var uPwdsalt: String? = null  //随机盐
 
 
-    private val uName: String? = null  //昵称
+    var uPicture: String? = null  //图片
 
 
-    private val uSchoolnumber: String? = null  //学号
+    var uName: String? = null  //昵称
 
 
-    private val uAlltime: Int? = null  //总时间
-
-    private val uSuccesstime: Int? = null  //成功时间
+    var uSchoolnumber: String? = null  //学号
 
 
-    private val gmtCreate: Date? = null  //数据创建时间
+    var uAlltime: Int? = null  //总时间
+
+    var uSuccesstime: Int? = null  //成功时间
 
 
-    private val gmtModified: Date? = null //数据修改时间
+    var gmtCreate: Date? = null  //数据创建时间
+
+
+    var gmtModified: Date? = null //数据修改时间
 }

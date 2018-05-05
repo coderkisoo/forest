@@ -41,6 +41,7 @@
             android:background="@color/base_background"
             android:checkableBehavior="single"
             app:itemTextColor="@color/text_color"
+            app:headerLayout="@layout/drawer_header"
             app:itemIconTint="@color/text_color"
             app:menu="@menu/navigation_menu" />
         <!--app:headerLayout="@layout/drawer_header"-->

@@ -28,4 +28,5 @@
     <string name="please_input_name">昵称</string>
     <string name="pwd_not_same">两次输入的密码不一致</string>
     <string name="please_select_head">请选择头像</string>
+    <string name="school_timetables">课程表</string>
 </resources>

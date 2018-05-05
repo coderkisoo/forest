@@ -39,7 +39,7 @@
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:textCursorDrawable="@drawable/white_edit_cursor"
+        android:textCursorDrawable="@drawable/white_cursor"
         tools:text="桥寻" />
 
     <EditText
@@ -61,7 +61,7 @@
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:textCursorDrawable="@drawable/white_edit_cursor"
+        android:textCursorDrawable="@drawable/white_cursor"
         tools:text="2014214038" />
 
     <EditText
@@ -82,7 +82,7 @@
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:textCursorDrawable="@drawable/white_edit_cursor"
+        android:textCursorDrawable="@drawable/white_cursor"
         tools:text="coderkisoo" />
 
     <EditText
@@ -104,7 +104,7 @@
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:textCursorDrawable="@drawable/white_edit_cursor" />
+        android:textCursorDrawable="@drawable/white_cursor" />
 
     <EditText
         android:id="@+id/et_password2"
@@ -123,7 +123,7 @@
         android:singleLine="true"
         android:textColor="#ffffff"
         android:textColorHint="#FFFFFF"
-        android:textCursorDrawable="@drawable/white_edit_cursor" />
+        android:textCursorDrawable="@drawable/white_cursor" />
 
     <TextView
         android:id="@+id/tv_go_login"
