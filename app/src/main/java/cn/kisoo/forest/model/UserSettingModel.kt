@@ -27,9 +27,7 @@ object UserSettingModel {
     }.value
 
 
-    var mSettings: Settings = lazy {
-        Gson().fromJson(mWhiteList.wlistName, Settings::class.java)
-    }.value
+    var mSettings: Settings = lazy { Gson().fromJson(mWhiteList.wlistName, Settings::class.java) }.value
 
     fun init(context: Context) {
         this.mContext = context
@@ -45,11 +43,21 @@ object UserSettingModel {
             KEY_DESTROY_TASK -> mSettings.destroyTask = open
             KEY_OPEN_WHITE_LIST -> mSettings.openWhiteList = open
         }
+        val realm = Realm.getDefaultInstance()
+        realm.beginTransaction()
+        val result = realm.where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
+        result.wlistName = Gson().toJson(mSettings)
+        realm.commitTransaction()
     }
 
     fun updateSettingsApplist(list: ArrayList<Application>) {
         mSettings.appList.clear()
         mSettings.appList.addAll(list)
+        val realm = Realm.getDefaultInstance()
+        realm.beginTransaction()
+        val result = realm.where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
+        result.wlistName = Gson().toJson(mSettings)
+        realm.commitTransaction()
     }
 
     fun currentAppList(): ArrayList<Application> = mSettings.appList
