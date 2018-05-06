@@ -15,12 +15,10 @@ object AwardListModel {
         if (list.isNotEmpty()) {
             return list
         }
-        val mRealm = Realm.getDefaultInstance()
-        val results = mRealm.where(UserAchievement::class.java).findAll()
+        val results =  Realm.getDefaultInstance().where(UserAchievement::class.java).findAll()
         results.forEach {
             list.add(it)
         }
-        mRealm.close()
         return list
     }
 

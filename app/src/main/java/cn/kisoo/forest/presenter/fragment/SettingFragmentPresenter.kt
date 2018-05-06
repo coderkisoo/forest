@@ -18,13 +18,22 @@ class SettingFragmentPresenter : BeamBasePresenter<ISettingFragmentView>() {
 
     fun logout() {
         UserAccountModel.logout()
+        UserSettingModel.clearData()
         view.finish()
         view.startActivity(LoginActivity::class.java)
     }
 
     fun recovery() {
+        UserSettingModel.recoverySettings()
+        updateSettingPage()
+    }
 
-
+    fun updateSettingPage() {
+        view.notifyMe(UserSettingModel.currentSettings().notifyMe)
+        view.keepLight(UserSettingModel.currentSettings().keepLight)
+        view.openWhiteList(UserSettingModel.currentSettings().openWhiteList)
+        view.senseMore(UserSettingModel.currentSettings().senseMore)
+        view.destroyTask(UserSettingModel.currentSettings().destroyTask)
     }
 
     fun setWhiteList() {

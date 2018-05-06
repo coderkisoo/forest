@@ -1,6 +1,5 @@
 package cn.kisoo.forest.ui.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +36,7 @@ class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragme
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mRootView = inflater.inflate(R.layout.fragment_setting, null)
         initViews()
+        presenter.updateSettingPage()
         return mRootView
     }
 
@@ -100,5 +100,24 @@ class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragme
         activity?.finish()
     }
 
+    override fun notifyMe(open: Boolean) {
+        mSTNNotifyMe?.isChecked = open
+    }
+
+    override fun keepLight(open: Boolean) {
+        mSTNKeepLight?.isChecked = open
+    }
+
+    override fun openWhiteList(open: Boolean) {
+        mSTNWhiteList?.isChecked = open
+    }
+
+    override fun senseMore(open: Boolean) {
+        mSTNSenseMore?.isChecked = open
+    }
+
+    override fun destroyTask(open: Boolean) {
+        mSTNDestroyTask?.isChecked = open
+    }
 
 }

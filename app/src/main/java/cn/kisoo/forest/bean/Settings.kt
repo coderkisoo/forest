@@ -6,7 +6,7 @@ class Settings {
     var notifyMe = true
     var keepLight = false
     var openWhiteList = false
-    var senseMore = true
+    var senseMore = false
     var destroyTask = true
     val appList = ArrayList<Application>()
 

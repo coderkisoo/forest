@@ -163,6 +163,7 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
             R.id.menu_main -> presenter.selectMainPage()
             R.id.menu_school_timetables -> presenter.selectSchoolTable()
             R.id.menu_setting -> presenter.selectSetting()
+            R.id.menu_login_out -> finish()
         }
         return false
     }
