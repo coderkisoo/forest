@@ -6,5 +6,7 @@ interface IMainActivityView : IBaseActivityView {
     fun updateHead(@DrawableRes headSrc: Int)
 
     fun updateName(name:String)
+    fun selectFragment(index: Int)
 
+    fun closeDrawer()
 }

@@ -10,6 +10,14 @@
         <item name="android:windowBackground">@color/base_background</item>
     </style>
 
+    <style name="SwitchTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorSwitchThumbNormal">@color/progress</item>
+        <item name="android:colorForeground">@color/more_light_color</item>
+    </style>
+
+
     <style name="WhiteBackgroundEditText" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorControlNormal">@color/white</item>

@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <!--android:checkable="true"-->
+    <group android:id="@+id/group_item">
 
-    <item
-        android:id="@+id/menu_main"
-        android:checkable="true"
-        android:icon="@mipmap/page_main"
-        android:title="@string/main_page" />
+        <item
+            android:id="@+id/menu_main"
+            android:checkable="true"
+            android:icon="@mipmap/page_main"
+            android:title="@string/main_page" />
 
-    <item
-        android:id="@+id/menu_school_timetables"
-        android:checkable="false"
-        android:icon="@mipmap/school_timetables"
-        android:title="@string/school_timetables" />
+        <item
+            android:id="@+id/menu_school_timetables"
+            android:checkable="false"
+            android:icon="@mipmap/school_timetables"
+            android:title="@string/school_timetables" />
 
 
-    <item
-        android:id="@+id/menu_setting"
-        android:checkable="false"
-        android:icon="@mipmap/settings"
-        android:title="@string/setting" />
+        <item
+            android:id="@+id/menu_setting"
+            android:checkable="false"
+            android:icon="@mipmap/settings"
+            android:title="@string/setting" />
+    </group>
 
-    <item
-        android:id="@+id/menu_login_out"
-        android:checkable="false"
-        android:icon="@mipmap/log_out"
-        android:title="@string/login_out" />
+    <group android:id="@+id/group_log_out">
+        <item
+            android:id="@+id/menu_login_out"
+            android:checkable="false"
+            android:icon="@mipmap/log_out"
+            android:title="@string/login_out" />
+    </group>
 
 </menu>

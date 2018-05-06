@@ -18,6 +18,8 @@ import cn.kisoo.forest.model.UserAccountModel.NAME_UPDATE
 import cn.kisoo.forest.presenter.activity.MainActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.fragment.MainFragment
+import cn.kisoo.forest.ui.fragment.SchoolTableFragment
+import cn.kisoo.forest.ui.fragment.SettingFragment
 import cn.kisoo.forest.ui.iview.activity.IMainActivityView
 import com.jude.beam.bijection.RequiresPresenter
 import de.hdodenhof.circleimageview.CircleImageView
@@ -27,14 +29,17 @@ import io.reactivex.Observable
  * Created by kangqizhou on 2018/4/11.
  */
 @RequiresPresenter(MainActivityPresenter::class)
-class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener, IMainActivityView, UserAccountModel.UserUpdateListener {
+class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener, IMainActivityView, UserAccountModel.UserUpdateListener, NavigationView.OnNavigationItemSelectedListener {
+
     override fun layoutId(): Int = R.layout.activity_main
 
     var mCIVHead: CircleImageView? = null
     var mTVName: TextView? = null
     var mFlContent: FrameLayout? = null
     var mDlContainer: DrawerLayout? = null
-    val list = lazy { arrayListOf(MainFragment()) }.value
+    val mFragmentList = lazy { arrayListOf(MainFragment(), SchoolTableFragment(), SettingFragment()) }.value
+    val mTitles = arrayListOf(R.string.main_page, R.string.school_timetables, R.string.setting)
+    var mCurrentIndex = -1
     var mCurrentFragment: Fragment? = null
     var mNavigationView: NavigationView? = null
 
@@ -42,7 +47,7 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         super.onCreate(savedInstanceState)
         initViews()
         initListeners()
-        selectFragment(0)
+        presenter.selectMainPage()
     }
 
     private fun initListeners() {
@@ -56,6 +61,7 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         mDlContainer = findViewById(R.id.dl_container)
         val view = mNavigationView?.getHeaderView(0)
         view?.findViewById<View>(R.id.rl_headview)?.setOnClickListener(this)
+        mNavigationView?.setNavigationItemSelectedListener(this)
         mCIVHead = view?.findViewById(R.id.civ_head)
         mTVName = view?.findViewById(R.id.tv_name)
     }
@@ -65,16 +71,18 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         return super.onCreateOptionsMenu(menu)
     }
 
-    private fun selectFragment(index: Int) {
+    override fun selectFragment(index: Int) {
         Observable.create<Int> { it -> it.onNext(index) }
-                .filter { i -> i < list.size && i >= 0 }
-                .map { i -> list[i] }
+                .filter { i -> i < mFragmentList.size && i >= 0 && i != mCurrentIndex }
+                .map { i -> mFragmentList[i] }
                 .map { fragment -> structTransaction(fragment) }
-                .map { transaction ->
-                    hideCurrentFragment(transaction)
+                .map { transaction -> hideCurrentFragment(transaction) }
+                .map { transition -> transition.commitNowAllowingStateLoss() }
+                .subscribe {
+                    mCurrentFragment = mFragmentList[index]
+                    mCurrentIndex = index
+                    title = getString(mTitles[index])
                 }
-                .doOnComplete { mCurrentFragment = list[index] }
-                .subscribe({ transition -> transition?.commitNowAllowingStateLoss() })
     }
 
     private fun hideCurrentFragment(transaction: FragmentTransaction): FragmentTransaction {
@@ -84,7 +92,7 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         return transaction
     }
 
-    private fun structTransaction(it: MainFragment): FragmentTransaction {
+    private fun structTransaction(it: Fragment): FragmentTransaction {
         val transaction = supportFragmentManager.beginTransaction()
         if (it.isAdded) {
             transaction.show(it)
@@ -97,6 +105,16 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
     override fun onClick(view: View) {
         when (view.id) {
             R.id.rl_headview -> presenter.updateUser()
+        }
+    }
+
+    override fun closeDrawer() {
+        var isOpen = false
+        mDlContainer?.let {
+            isOpen = mDlContainer!!.isDrawerOpen(Gravity.START)
+        }
+        if (isOpen) {
+            changeDrawerStatus()
         }
     }
 
@@ -139,4 +157,14 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         super.onDestroy()
         UserAccountModel.unRegisterListener(this)
     }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_main -> presenter.selectMainPage()
+            R.id.menu_school_timetables -> presenter.selectSchoolTable()
+            R.id.menu_setting -> presenter.selectSetting()
+        }
+        return false
+    }
+
 }

@@ -29,4 +29,19 @@ class MainActivityPresenter : Presenter<IMainActivityView>() {
         view.getContext().startActivity(intent)
     }
 
+    fun selectMainPage() {
+        view.closeDrawer()
+        view.selectFragment(0)
+    }
+
+    fun selectSchoolTable() {
+        view.closeDrawer()
+        view.selectFragment(1)
+    }
+
+    fun selectSetting() {
+        view.closeDrawer()
+        view.selectFragment(2)
+    }
+
 }

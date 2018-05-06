@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 app:navigationContentDescription="@string/option"
                 app:navigationIcon="@mipmap/option"
-                app:title=" ">
+                app:titleTextColor="@color/white">
 
             </android.support.v7.widget.Toolbar>
 
