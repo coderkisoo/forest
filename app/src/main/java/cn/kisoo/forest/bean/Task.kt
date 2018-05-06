@@ -16,13 +16,12 @@ open class Task {
 
     private val tStarttime: Date? = null  //开始时间
 
+    private var tSuccessLength :Int? = null //成功时长
 
     private val isSuccess: Byte? = null  //是否成功 0失败 1成功
 
 
-    private val gmtCreate: Date? = null
+    private val gmtCreate: String? = null //记录创建时间
 
-
-    private val gmtModified: Date? = null
 
 }

@@ -5,7 +5,7 @@ import android.support.v7.app.AlertDialog
 import android.widget.AdapterView
 import android.widget.GridView
 import cn.kisoo.forest.R
-import cn.kisoo.forest.ui.window.HeadSelectorAdapter
+import cn.kisoo.forest.ui.adapter.HeadSelectorAdapter
 
 object HeadSelectorUtil {
 

@@ -1,20 +1,21 @@
 package cn.kisoo.forest.bean
 
-import java.util.*
+import io.realm.RealmModel
+import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
 
-class UserAchievement {
+@RealmClass
+open class UserAchievement : RealmModel {
 
-    private val uAchiId: Int? = null
+    var achiPicture: String? = null  //成就图片
 
+    var achiName: String? = null  //成就名称
 
-    private val uId: Int? = null
+    @PrimaryKey
+    var achiId: Int? = null   //id
 
-    private val achiId: Int? = null
+    var achiDescribe: String? = null  //成就描述
 
-
-    private val gmtCreate: Date? = null
-
-
-    private val gmtModified: Date? = null
+    var gmtModified: String? = null //成就获得时间戳
 
 }

@@ -2,6 +2,7 @@ package cn.kisoo.forest.presenter.activity
 
 import android.content.Intent
 import cn.kisoo.forest.model.UserAccountModel
+import cn.kisoo.forest.ui.activity.AwardActivity
 import cn.kisoo.forest.ui.activity.UserActivity
 import cn.kisoo.forest.ui.iview.activity.IMainActivityView
 import cn.kisoo.forest.util.HeadSelectorUtil
@@ -21,6 +22,11 @@ class MainActivityPresenter : Presenter<IMainActivityView>() {
 
     fun updateHead() {
         view.updateHead(HeadSelectorUtil.mHeadList[UserAccountModel.currentHead()])
+    }
+
+    fun goAwardPage() {
+        val intent = Intent(view.getContext(), AwardActivity::class.java)
+        view.getContext().startActivity(intent)
     }
 
 }

@@ -11,7 +11,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.core.widget.toast
 import cn.kisoo.forest.R
 import cn.kisoo.forest.model.UserAccountModel
 import cn.kisoo.forest.model.UserAccountModel.HEAD_UPDATE
@@ -116,13 +115,9 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> changeDrawerStatus()
-            R.id.menu_award -> showAward()
+            R.id.menu_award -> presenter.goAwardPage()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun showAward() {
-        toast("award")
     }
 
     override fun onUserStatusUpdate(status: Int) {

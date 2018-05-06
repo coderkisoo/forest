@@ -38,7 +38,6 @@ object UserAccountModel {
         sharedPreferences?.edit {
             putInt(KEY_HEAD, Integer.valueOf(user.uPicture))
             putString(KEY_USERNAME, user.uUsername)
-            putString(KEY_SALT, user.uPwdsalt)
             putString(KEY_SCHOOL_NUM, user.uSchoolnumber)
         }
     }

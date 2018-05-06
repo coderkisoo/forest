@@ -27,12 +27,11 @@
         <!--<activity android:name=".ui.activity.MainActivity" />-->
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.UserActivity" />
-
         <service android:name=".service.UploadService" />
-
         <activity android:name=".ui.activity.UpdateNameActivity" />
         <activity android:name=".ui.activity.UpdatePasswordActivity" />
         <activity android:name=".ui.activity.UpdateSchoolNumActivity" />
+        <activity android:name=".ui.activity.AwardActivity" />
 
     </application>
 

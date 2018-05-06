@@ -1,4 +1,4 @@
-package cn.kisoo.forest.ui.window
+package cn.kisoo.forest.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.View

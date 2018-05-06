@@ -3,6 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="progress">#39cff1</color>
+    <color name="progress_1">#34b9d7</color>
+    <color name="progress_2">#288ca3</color>
     <color name="circle_color_bottom">#94c56b</color>
     <color name="base_background">#008695</color>
     <color name="title_color">#03707c</color>
@@ -10,4 +13,5 @@
     <color name="more_light_color">#19a4b3</color>
     <color name="text_color">#ffffff</color>
     <color name="white">#FFFFFF</color>
+    <color name="progress_background">#b4afaf</color>
 </resources>
