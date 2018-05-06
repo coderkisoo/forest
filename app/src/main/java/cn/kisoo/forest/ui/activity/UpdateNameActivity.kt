@@ -5,9 +5,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.UpdateNameActivityPresenter
+import cn.kisoo.forest.presenter.activity.UpdateNameActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.IUpdateNameActivityView
+import cn.kisoo.forest.ui.iview.activity.IUpdateNameActivityView
 import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(UpdateNameActivityPresenter::class)

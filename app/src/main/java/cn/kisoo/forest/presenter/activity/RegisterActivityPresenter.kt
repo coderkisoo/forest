@@ -1,9 +1,9 @@
-package cn.kisoo.forest.presenter
+package cn.kisoo.forest.presenter.activity
 
 import android.content.Intent
 import cn.kisoo.forest.R
 import cn.kisoo.forest.ui.activity.LoginActivity
-import cn.kisoo.forest.ui.iview.IRegisterActivityView
+import cn.kisoo.forest.ui.iview.activity.IRegisterActivityView
 import cn.kisoo.forest.util.ToastUtils
 import com.jude.beam.bijection.Presenter
 

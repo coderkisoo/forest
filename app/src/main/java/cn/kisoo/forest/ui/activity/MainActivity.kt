@@ -16,10 +16,10 @@ import cn.kisoo.forest.R
 import cn.kisoo.forest.model.UserAccountModel
 import cn.kisoo.forest.model.UserAccountModel.HEAD_UPDATE
 import cn.kisoo.forest.model.UserAccountModel.NAME_UPDATE
-import cn.kisoo.forest.presenter.MainActivityPresenter
+import cn.kisoo.forest.presenter.activity.MainActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.fragment.MainFragment
-import cn.kisoo.forest.ui.iview.IMainActivityView
+import cn.kisoo.forest.ui.iview.activity.IMainActivityView
 import com.jude.beam.bijection.RequiresPresenter
 import de.hdodenhof.circleimageview.CircleImageView
 import io.reactivex.Observable

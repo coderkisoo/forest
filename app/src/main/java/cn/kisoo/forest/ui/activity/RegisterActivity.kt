@@ -8,9 +8,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.RegisterActivityPresenter
+import cn.kisoo.forest.presenter.activity.RegisterActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.IRegisterActivityView
+import cn.kisoo.forest.ui.iview.activity.IRegisterActivityView
 import cn.kisoo.forest.util.HeadSelectorUtil
 import com.jude.beam.bijection.RequiresPresenter
 

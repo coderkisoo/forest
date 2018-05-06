@@ -1,11 +1,11 @@
-package cn.kisoo.forest.presenter
+package cn.kisoo.forest.presenter.activity
 
 import android.content.Intent
 import cn.kisoo.forest.model.UserAccountModel
 import cn.kisoo.forest.ui.activity.UpdateNameActivity
 import cn.kisoo.forest.ui.activity.UpdatePasswordActivity
 import cn.kisoo.forest.ui.activity.UpdateSchoolNumActivity
-import cn.kisoo.forest.ui.iview.IUserActivityView
+import cn.kisoo.forest.ui.iview.activity.IUserActivityView
 import cn.kisoo.forest.util.HeadSelectorUtil
 import com.jude.beam.bijection.Presenter
 import com.orhanobut.logger.Logger

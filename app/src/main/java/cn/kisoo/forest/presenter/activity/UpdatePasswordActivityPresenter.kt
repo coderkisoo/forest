@@ -1,6 +1,6 @@
-package cn.kisoo.forest.presenter
+package cn.kisoo.forest.presenter.activity
 
-import cn.kisoo.forest.ui.iview.IUpdatePasswordActivityView
+import cn.kisoo.forest.ui.iview.activity.IUpdatePasswordActivityView
 import com.jude.beam.bijection.Presenter
 
 class UpdatePasswordActivityPresenter : Presenter<IUpdatePasswordActivityView>() {

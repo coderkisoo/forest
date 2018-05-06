@@ -10,9 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.toast
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.TimeDownActivityPresenter
+import cn.kisoo.forest.presenter.activity.TimeDownActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.ITimeDownActivityView
+import cn.kisoo.forest.ui.iview.activity.ITimeDownActivityView
 import cn.kisoo.forest.view.CircleWidget
 import com.jude.beam.bijection.RequiresPresenter
 import com.orhanobut.logger.Logger

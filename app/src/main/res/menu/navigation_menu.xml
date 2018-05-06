@@ -21,5 +21,10 @@
         android:icon="@mipmap/settings"
         android:title="@string/setting" />
 
+    <item
+        android:id="@+id/menu_login_out"
+        android:checkable="false"
+        android:icon="@mipmap/log_out"
+        android:title="@string/login_out" />
 
 </menu>

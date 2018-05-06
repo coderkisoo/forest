@@ -21,8 +21,9 @@
                 android:id="@+id/tl_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:navigationContentDescription="@string/option"
                 app:navigationIcon="@mipmap/option"
-                app:navigationContentDescription="@string/option">
+                app:title=" ">
 
             </android.support.v7.widget.Toolbar>
 
@@ -40,9 +41,9 @@
             android:layout_gravity="start"
             android:background="@color/base_background"
             android:checkableBehavior="single"
-            app:itemTextColor="@color/text_color"
             app:headerLayout="@layout/drawer_header"
             app:itemIconTint="@color/text_color"
+            app:itemTextColor="@color/text_color"
             app:menu="@menu/navigation_menu" />
         <!--app:headerLayout="@layout/drawer_header"-->
 

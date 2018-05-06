@@ -14,9 +14,9 @@ import cn.kisoo.forest.model.UserAccountModel
 import cn.kisoo.forest.model.UserAccountModel.HEAD_UPDATE
 import cn.kisoo.forest.model.UserAccountModel.NAME_UPDATE
 import cn.kisoo.forest.model.UserAccountModel.SCHOOL_NUM_UPDATE
-import cn.kisoo.forest.presenter.UserActivityPresenter
+import cn.kisoo.forest.presenter.activity.UserActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.IUserActivityView
+import cn.kisoo.forest.ui.iview.activity.IUserActivityView
 import cn.kisoo.forest.util.HeadSelectorUtil
 import com.jude.beam.bijection.RequiresPresenter
 

@@ -1,9 +1,9 @@
-package cn.kisoo.forest.presenter
+package cn.kisoo.forest.presenter.activity
 
 import android.content.Intent
 import android.os.CountDownTimer
 import cn.kisoo.forest.ui.activity.ResultActivity
-import cn.kisoo.forest.ui.iview.ITimeDownActivityView
+import cn.kisoo.forest.ui.iview.activity.ITimeDownActivityView
 import com.jude.beam.bijection.Presenter
 
 class TimeDownActivityPresenter : Presenter<ITimeDownActivityView>() {

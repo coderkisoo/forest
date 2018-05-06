@@ -5,9 +5,9 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.LoginActivityPresenter
+import cn.kisoo.forest.presenter.activity.LoginActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.ILoginActivityView
+import cn.kisoo.forest.ui.iview.activity.ILoginActivityView
 import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(LoginActivityPresenter::class)

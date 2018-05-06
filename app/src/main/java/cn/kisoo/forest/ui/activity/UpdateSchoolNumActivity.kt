@@ -5,9 +5,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.UpdateSchoolNumActivityPresenter
+import cn.kisoo.forest.presenter.activity.UpdateSchoolNumActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
-import cn.kisoo.forest.ui.iview.IUpdateSchoolNumActivityView
+import cn.kisoo.forest.ui.iview.activity.IUpdateSchoolNumActivityView
 import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(UpdateSchoolNumActivityPresenter::class)

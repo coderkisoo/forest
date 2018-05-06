@@ -1,8 +1,8 @@
-package cn.kisoo.forest.presenter
+package cn.kisoo.forest.presenter.activity
 
 import android.content.Intent
 import cn.kisoo.forest.ui.activity.RegisterActivity
-import cn.kisoo.forest.ui.iview.ILoginActivityView
+import cn.kisoo.forest.ui.iview.activity.ILoginActivityView
 import com.jude.beam.bijection.Presenter
 
 class LoginActivityPresenter : Presenter<ILoginActivityView>() {

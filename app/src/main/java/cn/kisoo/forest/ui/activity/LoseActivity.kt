@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.LoseActivityPresenter
+import cn.kisoo.forest.presenter.activity.LoseActivityPresenter
 import cn.kisoo.forest.view.CircleWidget
 import com.jude.beam.bijection.RequiresPresenter
 

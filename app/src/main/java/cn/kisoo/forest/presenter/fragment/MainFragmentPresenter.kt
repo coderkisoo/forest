@@ -1,8 +1,8 @@
-package cn.kisoo.forest.presenter
+package cn.kisoo.forest.presenter.fragment
 
 import android.content.Intent
 import cn.kisoo.forest.ui.activity.TimeDownActivity
-import cn.kisoo.forest.ui.iview.IMainFragmentView
+import cn.kisoo.forest.ui.iview.fragment.IMainFragmentView
 import com.jude.beam.expansion.BeamBasePresenter
 import com.orhanobut.logger.Logger
 

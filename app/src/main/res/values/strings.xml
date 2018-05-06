@@ -39,5 +39,6 @@
     <string name="account_is">账号： %1s</string>
     <string name="password_update">密码修改</string>
     <string name="confirm_password">确认密码</string>
+    <string name="login_out">退出</string>
 
 </resources>
