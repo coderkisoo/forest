@@ -12,7 +12,7 @@ import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(LoginActivityPresenter::class)
 class LoginActivity : BaseActivity<LoginActivityPresenter>(), View.OnClickListener, ILoginActivityView {
-
+    override fun layoutId(): Int = R.layout.activity_login
 
     var mTVRegister: TextView? = null
     var mETPassword: EditText? = null
@@ -20,7 +20,6 @@ class LoginActivity : BaseActivity<LoginActivityPresenter>(), View.OnClickListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
         initViews()
     }
 

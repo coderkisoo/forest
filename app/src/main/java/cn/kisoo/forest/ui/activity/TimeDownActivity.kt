@@ -18,7 +18,8 @@ import com.jude.beam.bijection.RequiresPresenter
 import com.orhanobut.logger.Logger
 
 @RequiresPresenter(TimeDownActivityPresenter::class)
-class TimeDownActivity : BaseActivity<TimeDownActivityPresenter>(), TimeDownActivityPresenter.TimeDownTimer.TimeDownListener, View.OnClickListener , ITimeDownActivityView {
+class TimeDownActivity : BaseActivity<TimeDownActivityPresenter>(), TimeDownActivityPresenter.TimeDownTimer.TimeDownListener, View.OnClickListener, ITimeDownActivityView {
+    override fun layoutId(): Int = R.layout.activity_time_down
 
     companion object {
         @JvmStatic
@@ -33,7 +34,6 @@ class TimeDownActivity : BaseActivity<TimeDownActivityPresenter>(), TimeDownActi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_time_down)
         initViews()
         startTiming()
     }

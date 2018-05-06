@@ -12,6 +12,8 @@ import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(LoseActivityPresenter::class)
 class LoseActivity : ResultActivity<LoseActivityPresenter>(), View.OnClickListener {
+    override fun layoutId(): Int = R.layout.activity_lose
+
     override fun onClick(v: View?) {
 
     }
@@ -22,7 +24,6 @@ class LoseActivity : ResultActivity<LoseActivityPresenter>(), View.OnClickListen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lose)
         initViews()
     }
 

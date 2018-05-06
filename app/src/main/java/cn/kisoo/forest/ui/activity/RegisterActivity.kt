@@ -16,7 +16,7 @@ import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(RegisterActivityPresenter::class)
 class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClickListener, IRegisterActivityView {
-
+    override fun layoutId(): Int = R.layout.activity_register
 
     var mIVHead: ImageView? = null
     var mETName: EditText? = null

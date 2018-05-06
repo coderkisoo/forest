@@ -23,6 +23,7 @@ object HeadSelectorUtil {
             alerDialog?.dismiss()
         }
         alerDialog = AlertDialog.Builder(activity)
+                .setTitle(R.string.please_select_head)
                 .setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
                 .setView(view)
                 .create()

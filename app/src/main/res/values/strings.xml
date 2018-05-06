@@ -33,4 +33,11 @@
     <string name="confirm">确认</string>
     <string name="old_password">原密码</string>
     <string name="new_password">新密码</string>
+    <string name="password_not_same">两次密码输入不一致</string>
+    <string name="name_is">昵称： %1s</string>
+    <string name="school_num_is">学号： %1s</string>
+    <string name="account_is">账号： %1s</string>
+    <string name="password_update">密码修改</string>
+    <string name="confirm_password">确认密码</string>
+
 </resources>

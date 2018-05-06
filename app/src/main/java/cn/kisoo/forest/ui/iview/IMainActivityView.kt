@@ -1,7 +1,10 @@
 package cn.kisoo.forest.ui.iview
 
-import android.content.Context
+import android.support.annotation.DrawableRes
 
-interface IMainActivityView:IBaseActivityView {
+interface IMainActivityView : IBaseActivityView {
+    fun updateHead(@DrawableRes headSrc: Int)
+
+    fun updateName(name:String)
 
 }

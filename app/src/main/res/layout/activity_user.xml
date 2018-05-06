@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/tl_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/base_background"
@@ -35,38 +37,53 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@drawable/textview_ripple"
-        android:drawableRight="@mipmap/update"
         android:padding="10dp"
-        android:paddingLeft="16dp"
-        android:text="昵称： 桥寻"
+        android:paddingLeft="20dp"
+        tools:text="账号： coderkisoo"
         android:textColor="@color/white"
         android:textSize="22sp" />
 
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/textview_ripple"
         android:drawableRight="@mipmap/update"
         android:padding="10dp"
-        android:paddingLeft="16dp"
-        android:text="学号： 2014214038"
+        android:paddingLeft="20dp"
+        tools:text="昵称： 桥寻"
         android:textColor="@color/white"
         android:textSize="22sp" />
 
     <TextView
+        android:id="@+id/tv_school_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/textview_ripple"
+        android:drawableRight="@mipmap/update"
+        android:padding="10dp"
+        android:paddingLeft="20dp"
+        tools:text="学号： 2014214038"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/tv_password_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="@drawable/textview_ripple"
         android:drawableRight="@mipmap/right"
         android:padding="10dp"
-        android:paddingLeft="16dp"
-        android:text="密码修改"
+        android:paddingLeft="20dp"
+        android:text="@string/password_update"
         android:textColor="@color/white"
         android:textSize="22sp" />
 

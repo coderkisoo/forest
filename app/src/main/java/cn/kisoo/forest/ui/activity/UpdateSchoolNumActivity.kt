@@ -12,12 +12,12 @@ import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(UpdateSchoolNumActivityPresenter::class)
 class UpdateSchoolNumActivity : BaseActivity<UpdateSchoolNumActivityPresenter>(), IUpdateSchoolNumActivityView {
+    override fun layoutId(): Int = R.layout.activity_update_school_num
 
     var mETSchoolNum: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_update_school_num)
         initViews()
     }
 

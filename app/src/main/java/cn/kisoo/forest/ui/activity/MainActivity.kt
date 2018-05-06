@@ -5,30 +5,35 @@ import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.widget.DrawerLayout
-import android.support.v7.widget.Toolbar
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.core.widget.toast
 import cn.kisoo.forest.R
+import cn.kisoo.forest.model.UserAccountModel
+import cn.kisoo.forest.model.UserAccountModel.HEAD_UPDATE
+import cn.kisoo.forest.model.UserAccountModel.NAME_UPDATE
 import cn.kisoo.forest.presenter.MainActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.fragment.MainFragment
 import cn.kisoo.forest.ui.iview.IMainActivityView
 import com.jude.beam.bijection.RequiresPresenter
+import de.hdodenhof.circleimageview.CircleImageView
 import io.reactivex.Observable
 
 /**
  * Created by kangqizhou on 2018/4/11.
  */
 @RequiresPresenter(MainActivityPresenter::class)
-class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener ,IMainActivityView{
+class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener, IMainActivityView, UserAccountModel.UserUpdateListener {
+    override fun layoutId(): Int = R.layout.activity_main
 
-
+    var mCIVHead: CircleImageView? = null
+    var mTVName: TextView? = null
     var mFlContent: FrameLayout? = null
-    var mTlTitle: Toolbar? = null
     var mDlContainer: DrawerLayout? = null
     val list = lazy { arrayListOf(MainFragment()) }.value
     var mCurrentFragment: Fragment? = null
@@ -36,21 +41,24 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         initViews()
+        initListeners()
         selectFragment(0)
+    }
+
+    private fun initListeners() {
+        UserAccountModel.registerListener(this)
     }
 
 
     private fun initViews() {
+        mNavigationView = findViewById(R.id.nv_drawer)
         mFlContent = findViewById(R.id.fl_content)
         mDlContainer = findViewById(R.id.dl_container)
-        mTlTitle = findViewById(R.id.tl_title)
-        mNavigationView = findViewById(R.id.nv_drawer)
         val view = mNavigationView?.getHeaderView(0)
         view?.findViewById<View>(R.id.rl_headview)?.setOnClickListener(this)
-        setSupportActionBar(mTlTitle)
-        title = ""
+        mCIVHead = view?.findViewById(R.id.civ_head)
+        mTVName = view?.findViewById(R.id.tv_name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -117,4 +125,23 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         toast("award")
     }
 
+    override fun onUserStatusUpdate(status: Int) {
+        when (status) {
+            NAME_UPDATE -> presenter.updateName()
+            HEAD_UPDATE -> presenter.updateHead()
+        }
+    }
+
+    override fun updateHead(headSrc: Int) {
+        mCIVHead?.setImageResource(headSrc)
+    }
+
+    override fun updateName(name: String) {
+        mTVName?.text = name
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        UserAccountModel.unRegisterListener(this)
+    }
 }

@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:padding="3dp"
         android:text="桥寻"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="16dp"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
