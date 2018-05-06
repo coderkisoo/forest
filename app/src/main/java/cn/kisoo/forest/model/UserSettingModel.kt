@@ -58,6 +58,14 @@ object UserSettingModel {
         val result = realm.where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
         result.wlistName = Gson().toJson(mSettings)
         realm.commitTransaction()
+        realm.close()
+    }
+
+    fun uploadSettings(){
+        val realm = Realm.getDefaultInstance()
+        val result = realm.where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
+        realm.close()
+        //todo 转化result 上传 即可
     }
 
     fun currentAppList(): ArrayList<Application> = mSettings.appList

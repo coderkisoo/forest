@@ -1,5 +1,6 @@
 package cn.kisoo.forest.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +18,6 @@ import com.jude.beam.bijection.RequiresPresenter
 @RequiresPresenter(SettingFragmentPresenter::class)
 class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragmentView, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-
     var mRootView: View? = null
 
     var mRLNotifyMe: RelativeLayout? = null
@@ -32,6 +32,7 @@ class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragme
     var mSTNDestroyTask: Switch? = null
     var mTVRecovery: TextView? = null
     var mTVLogout: TextView? = null
+    var mTVUpload: TextView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mRootView = inflater.inflate(R.layout.fragment_setting, null)
@@ -68,6 +69,9 @@ class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragme
         //恢复初始设置
         mTVRecovery = mRootView?.findViewById(R.id.tv_recovery)
         mTVRecovery?.setOnClickListener(this)
+        //上传设置
+        mTVUpload = mRootView?.findViewById(R.id.tv_upload_settings)
+        mTVUpload?.setOnClickListener(this)
         //退出
         mTVLogout = mRootView?.findViewById(R.id.tv_logout)
         mTVLogout?.setOnClickListener(this)
@@ -78,6 +82,7 @@ class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragme
             R.id.tv_recovery -> presenter.recovery()
             R.id.tv_logout -> presenter.logout()
             R.id.rl_white_list -> presenter.setWhiteList()
+            R.id.tv_upload_settings -> presenter.uploadSettings()
         }
     }
 
@@ -90,5 +95,10 @@ class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragme
             R.id.stn_destroy_task -> presenter.destroyTask(isChecked)
         }
     }
+
+    override fun finish() {
+        activity?.finish()
+    }
+
 
 }

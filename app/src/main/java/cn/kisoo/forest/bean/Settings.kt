@@ -10,7 +10,6 @@ class Settings {
     var destroyTask = true
     val appList = ArrayList<Application>()
 
-
 }
 
 class Application {

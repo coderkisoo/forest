@@ -21,7 +21,6 @@ object UserAccountModel {
     private const val KEY_UID = "key_uid"
     private const val KEY_USERNAME = "key_username"
     private const val KET_NAME = "key_name"
-    private const val KEY_SALT = "key_salt"
     private const val KEY_SCHOOL_NUM = "key_school_num"
 
 
@@ -30,7 +29,8 @@ object UserAccountModel {
     }
 
     fun isLogin(): Boolean {
-        return mContext?.getSharedPreferences(USER_SP, Context.MODE_PRIVATE)?.getString(KEY_SALT, null) != null
+        val uid = UID()
+        return uid != "0"
     }
 
 
@@ -40,6 +40,7 @@ object UserAccountModel {
             putInt(KEY_HEAD, Integer.valueOf(user.uPicture))
             putString(KEY_USERNAME, user.uUsername)
             putString(KEY_SCHOOL_NUM, user.uSchoolnumber)
+            putString(KEY_UID, user.uId.toString())
         }
     }
 
@@ -69,7 +70,7 @@ object UserAccountModel {
 
     fun UID(): String {
         val sharedPreferences = mContext?.getSharedPreferences(USER_SP, Context.MODE_PRIVATE)
-        return sharedPreferences!!.getString(KEY_UID, "123")
+        return sharedPreferences!!.getString(KEY_UID, "-1")
     }
 
     fun currentHead(): Int {
@@ -90,6 +91,14 @@ object UserAccountModel {
     fun currentAccount(): String {
         val sharedPreferences = mContext?.getSharedPreferences(USER_SP, Context.MODE_PRIVATE)
         return sharedPreferences!!.getString(KEY_USERNAME, "coderkisoo")
+    }
+
+    fun logout() {
+        val sharedPreferences = mContext?.getSharedPreferences(USER_SP, Context.MODE_PRIVATE)
+        sharedPreferences?.edit {
+            clear()
+            putString(KEY_UID, "-1")
+        }
     }
 
 

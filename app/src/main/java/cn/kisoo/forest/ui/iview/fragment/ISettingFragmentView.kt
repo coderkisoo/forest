@@ -1,5 +1,5 @@
 package cn.kisoo.forest.ui.iview.fragment
 
-interface ISettingFragmentView {
-
+interface ISettingFragmentView :IBaseFragmentView{
+    fun finish()
 }
