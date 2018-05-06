@@ -2,6 +2,7 @@ package cn.kisoo.forest.constant
 
 import android.app.Application
 import cn.kisoo.forest.model.UserAccountModel
+import cn.kisoo.forest.model.UserSettingModel
 import cn.kisoo.forest.util.ToastUtils
 import com.jude.beam.Beam
 import com.orhanobut.logger.AndroidLogAdapter
@@ -16,6 +17,7 @@ class App : Application() {
         Realm.init(this)
         ToastUtils.register(this)
         UserAccountModel.init(this)
+        UserSettingModel.init(this)
         Logger.addLogAdapter(AndroidLogAdapter())
     }
 }

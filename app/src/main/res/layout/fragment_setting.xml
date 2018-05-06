@@ -26,6 +26,7 @@
         android:background="@color/progress_background" />
 
     <RelativeLayout
+        android:id="@+id/rl_notify_me"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textview_ripple"
@@ -59,6 +60,7 @@
         android:background="@color/progress_background" />
 
     <RelativeLayout
+        android:id="@+id/rl_keep_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textview_ripple"
@@ -91,6 +93,7 @@
         android:background="@color/progress_background" />
 
     <RelativeLayout
+        android:id="@+id/rl_white_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textview_ripple"
@@ -111,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:checked="true"
+            android:checked="false"
             android:theme="@style/SwitchTheme" />
     </RelativeLayout>
 
@@ -123,6 +126,7 @@
         android:background="@color/progress_background" />
 
     <RelativeLayout
+        android:id="@+id/rl_sens"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/light_color"
@@ -155,6 +159,7 @@
         android:background="@color/progress_background" />
 
     <RelativeLayout
+        android:id="@+id/rl_destroy_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/textview_ripple"
@@ -208,22 +213,19 @@
         android:layout_marginRight="8dp"
         android:background="@color/progress_background" />
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tv_recovery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:background="@drawable/textview_ripple"
-        android:padding="12dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="恢复默认设置"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-    </RelativeLayout>
+        android:paddingBottom="12dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="12dp"
+        android:paddingTop="12dp"
+        android:text="恢复默认设置"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <View
         android:layout_width="match_parent"
@@ -232,21 +234,19 @@
         android:layout_marginRight="20dp"
         android:background="@color/progress_background" />
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tv_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:background="@drawable/textview_ripple"
-        android:padding="12dp">
+        android:paddingBottom="12dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="12dp"
+        android:paddingTop="12dp"
+        android:text="退出"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="12dp"
-            android:text="退出"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-    </RelativeLayout>
 
 </LinearLayout>

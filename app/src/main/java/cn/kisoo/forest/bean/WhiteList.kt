@@ -1,11 +1,15 @@
 package cn.kisoo.forest.bean
 
+import io.realm.RealmModel
+import io.realm.annotations.RealmClass
+
 
 //白名单类
-class Whitelist {
+@RealmClass
+open class Whitelist : RealmModel{
 
-    private val uId: Int? = null   //用户id
+    private var uId: Int? = null   //用户id
 
-    private val wlistName: String? = null   //内容
+    var wlistName: String? = null   //内容
 
 }

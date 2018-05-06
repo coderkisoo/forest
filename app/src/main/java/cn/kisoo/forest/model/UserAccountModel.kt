@@ -17,11 +17,12 @@ object UserAccountModel {
     var user: User? = null
     const val USER_SP = "user_sp"
 
-    const val KEY_HEAD = "key_head"
-    const val KEY_USERNAME = "key_username"
-    const val KET_NAME = "key_name"
-    const val KEY_SALT = "key_salt"
-    const val KEY_SCHOOL_NUM = "key_school_num"
+    private const val KEY_HEAD = "key_head"
+    private const val KEY_UID = "key_uid"
+    private const val KEY_USERNAME = "key_username"
+    private const val KET_NAME = "key_name"
+    private const val KEY_SALT = "key_salt"
+    private const val KEY_SCHOOL_NUM = "key_school_num"
 
 
     fun init(context: Context) {
@@ -65,6 +66,11 @@ object UserAccountModel {
     }
 
     val mHandler = Handler(Looper.getMainLooper())
+
+    fun UID(): String {
+        val sharedPreferences = mContext?.getSharedPreferences(USER_SP, Context.MODE_PRIVATE)
+        return sharedPreferences!!.getString(KEY_UID, "123")
+    }
 
     fun currentHead(): Int {
         val sharedPreferences = mContext?.getSharedPreferences(USER_SP, Context.MODE_PRIVATE)
