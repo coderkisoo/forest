@@ -29,8 +29,8 @@ object UserAccountModel {
     }
 
     fun isLogin(): Boolean {
-        val uid = UID()
-        return uid != "0"
+//        return UID() != "-1"
+        return true
     }
 
 

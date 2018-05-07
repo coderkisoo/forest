@@ -8,6 +8,7 @@
     <color name="progress_2">#288ca3</color>
     <color name="circle_color_bottom">#94c56b</color>
     <color name="base_background">#008695</color>
+    <color name="transparent">#00000000</color>
     <color name="title_color">#03707c</color>
     <color name="light_color">#178f9c</color>
     <color name="more_light_color">#19a4b3</color>

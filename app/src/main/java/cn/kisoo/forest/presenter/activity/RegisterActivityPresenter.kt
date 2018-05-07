@@ -4,13 +4,11 @@ import android.content.Intent
 import cn.kisoo.forest.R
 import cn.kisoo.forest.ui.activity.LoginActivity
 import cn.kisoo.forest.ui.iview.activity.IRegisterActivityView
+import cn.kisoo.forest.util.HeadSelectorUtil
 import cn.kisoo.forest.util.ToastUtils
 import com.jude.beam.bijection.Presenter
 
 class RegisterActivityPresenter : Presenter<IRegisterActivityView>() {
-
-    val mHeadList = arrayOf(R.mipmap.head_1, R.mipmap.head_2, R.mipmap.head_3, R.mipmap.head_4,
-            R.mipmap.head_5, R.mipmap.head_6, R.mipmap.head_7, R.mipmap.head_8)
 
     var mCurrentHead = 0
 
@@ -37,7 +35,7 @@ class RegisterActivityPresenter : Presenter<IRegisterActivityView>() {
 
     fun selectHead(position: Int) {
         mCurrentHead = position
-        view.setHead(mHeadList[position])
+        view.setHead(HeadSelectorUtil.mHeadList[position])
     }
 
 

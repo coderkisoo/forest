@@ -29,7 +29,7 @@
         android:id="@+id/rl_notify_me"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/textview_ripple"
+        android:background="?android:attr/selectableItemBackground"
         android:padding="12dp">
 
         <TextView
@@ -63,7 +63,7 @@
         android:id="@+id/rl_keep_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/textview_ripple"
+        android:background="?android:attr/selectableItemBackground"
         android:padding="12dp">
 
         <TextView
@@ -96,7 +96,7 @@
         android:id="@+id/rl_white_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/textview_ripple"
+        android:background="?android:attr/selectableItemBackground"
         android:padding="12dp">
 
         <TextView
@@ -162,7 +162,7 @@
         android:id="@+id/rl_destroy_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/textview_ripple"
+        android:background="?android:attr/selectableItemBackground"
         android:padding="12dp">
 
         <TextView
@@ -218,7 +218,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:background="@drawable/textview_ripple"
+        android:background="?android:attr/selectableItemBackground"
         android:paddingBottom="12dp"
         android:paddingLeft="24dp"
         android:paddingRight="12dp"
@@ -239,7 +239,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:background="@drawable/textview_ripple"
+        android:background="?android:attr/selectableItemBackground"
         android:paddingBottom="12dp"
         android:paddingLeft="24dp"
         android:paddingRight="12dp"
@@ -260,7 +260,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:background="@drawable/textview_ripple"
+        android:background="?android:attr/selectableItemBackground"
         android:paddingBottom="12dp"
         android:paddingLeft="24dp"
         android:paddingRight="12dp"

@@ -30,9 +30,10 @@ class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClick
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
         initViews()
     }
+
+
 
     private fun initViews() {
         mIVHead = findViewById(R.id.iv_head)

@@ -3,7 +3,7 @@
     android:id="@+id/rl_destroy_task"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@drawable/textview_ripple"
+    android:background="?android:attr/selectableItemBackground"
     android:paddingLeft="4dp"
     android:paddingRight="4dp">
 

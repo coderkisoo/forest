@@ -12,28 +12,28 @@ object TaskListModel {
             task.tStarttime = Date()
             task.tLength = minute
             task.uId = UserAccountModel.UID()
-            task.isSuccess = -1
+            task.isSuccess = (-1).toByte()
         }
     }
 
-    fun successRecentTask(){
+    fun successRecentTask() {
+        Realm.getDefaultInstance().executeTransaction {
+            val task = it.where(Task::class.java)
+                    .equalTo("uId", UserAccountModel.UID())
+                    .equalTo("isSuccess", (-1).toByte())
+                    .findFirst()
+            task?.isSuccess = 1.toByte()
+        }
+    }
+
+
+    fun successRecentTask(minute: Int) {
         Realm.getDefaultInstance().executeTransaction {
             val task = it.where(Task::class.java)
                     .equalTo("uId", UserAccountModel.UID())
                     .equalTo("isSuccess", -1)
                     .findFirst()
-            task.isSuccess = 1
-        }
-    }
-
-
-    fun successRecentTask(minute: Int){
-        Realm.getDefaultInstance().executeTransaction {
-            val task = it.where(Task::class.java)
-                    .equalTo("uId", UserAccountModel.UID())
-                    .equalTo("isSuccess", -1)
-                    .findFirst()
-
+            task?.tSuccessLength = minute
         }
     }
 
@@ -44,18 +44,41 @@ object TaskListModel {
                     .equalTo("isSuccess", -1)
                     .findAll()
             results.forEach {
-                it.isSuccess = 0
+                it.isSuccess = 0.toByte()
             }
         }
     }
 
-
-    fun fetchTask(fetchTaskCallback: FetchTaskCallback) {
+    fun uploadSuccess() {
         Realm.getDefaultInstance().executeTransaction {
             val results = it.where(Task::class.java)
                     .equalTo("uId", UserAccountModel.UID())
                     .equalTo("hasUpload", false)
                     .notEqualTo("isSuccess", "-1")
+                    .findAllSorted("tId")
+            results.forEach {
+                it.hasUpload = true
+            }
+        }
+    }
+
+    fun fetchTask(fetchTaskCallback: FetchTaskCallback) {
+        Realm.getDefaultInstance().executeTransaction {
+            val results = it.where(Task::class.java)
+                    .equalTo("uId", UserAccountModel.UID())
+                    .findAll()
+            if (results.isNotEmpty()) {
+                fetchTaskCallback.onTaskFetch(results)
+            }
+        }
+    }
+
+    fun uploadTask(fetchTaskCallback: FetchTaskCallback) {
+        Realm.getDefaultInstance().executeTransaction {
+            val results = it.where(Task::class.java)
+                    .equalTo("uId", UserAccountModel.UID())
+                    .equalTo("hasUpload", false)
+                    .notEqualTo("isSuccess", (-1).toByte())
                     .findAll()
             if (results.isNotEmpty()) {
                 fetchTaskCallback.onTaskFetch(results)
