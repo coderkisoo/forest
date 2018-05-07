@@ -1,27 +1,26 @@
 package cn.kisoo.forest.bean
 
+import io.realm.RealmModel
+import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
 import java.util.*
 
+@RealmClass
+open class Task :RealmModel{
 
-open class Task {
+    @PrimaryKey
+    var tId: Int? = null    //任务id
 
-    private val tId: Int? = null    //任务id
+    var uId: String? = null  //用户id
 
+    var tLength: Int? = null  //时长
 
-    private val uId: Int? = null  //用户id
+    var tStarttime: Date? = null  //开始时间
 
+    var tSuccessLength :Int? = null //成功时长
 
-    private val tLength: Int? = null  //时长
+    var isSuccess: Byte? = null  //是否成功 0失败 1成功 -1还未出结果
 
-
-    private val tStarttime: Date? = null  //开始时间
-
-    private var tSuccessLength :Int? = null //成功时长
-
-    private val isSuccess: Byte? = null  //是否成功 0失败 1成功
-
-
-    private val gmtCreate: String? = null //记录创建时间
-
+    var hasUpload = false // 是否已经上传成功
 
 }

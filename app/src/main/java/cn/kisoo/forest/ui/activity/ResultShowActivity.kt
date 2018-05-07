@@ -6,16 +6,19 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import cn.kisoo.forest.R
-import cn.kisoo.forest.presenter.activity.LoseActivityPresenter
+import cn.kisoo.forest.presenter.activity.ResultShowActivityPresenter
+import cn.kisoo.forest.ui.iview.activity.IResultShowActivityView
 import cn.kisoo.forest.view.CircleWidget
 import com.jude.beam.bijection.RequiresPresenter
 
-@RequiresPresenter(LoseActivityPresenter::class)
-class LoseActivity : ResultActivity<LoseActivityPresenter>(), View.OnClickListener {
+@RequiresPresenter(ResultShowActivityPresenter::class)
+class ResultShowActivity : ResultActivity<ResultShowActivityPresenter>(), View.OnClickListener, IResultShowActivityView {
     override fun layoutId(): Int = R.layout.activity_lose
 
-    override fun onClick(v: View?) {
-
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.btn_do_next -> finish()
+        }
     }
 
     var mCwWidget: CircleWidget? = null
@@ -25,6 +28,7 @@ class LoseActivity : ResultActivity<LoseActivityPresenter>(), View.OnClickListen
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
+        presenter.uploadTasks()
     }
 
     private fun initViews() {

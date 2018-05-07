@@ -7,7 +7,7 @@ import cn.kisoo.forest.model.UserSettingModel.KEY_KEEP_LIGHT
 import cn.kisoo.forest.model.UserSettingModel.KEY_NOTIFY_ME
 import cn.kisoo.forest.model.UserSettingModel.KEY_OPEN_WHITE_LIST
 import cn.kisoo.forest.model.UserSettingModel.KEY_SENSE_MORE
-import cn.kisoo.forest.ui.activity.LoginActivity
+import cn.kisoo.forest.ui.activity.AdsActivity
 import cn.kisoo.forest.ui.iview.fragment.ISettingFragmentView
 import com.jude.beam.expansion.BeamBasePresenter
 
@@ -20,7 +20,7 @@ class SettingFragmentPresenter : BeamBasePresenter<ISettingFragmentView>() {
         UserAccountModel.logout()
         UserSettingModel.clearData()
         view.finish()
-        view.startActivity(LoginActivity::class.java)
+        view.startActivity(AdsActivity::class.java)
     }
 
     fun recovery() {

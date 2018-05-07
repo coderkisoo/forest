@@ -12,12 +12,9 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/tl_title"
         android:layout_width="match_parent"
+        app:title=" "
         android:layout_height="wrap_content"
-        app:navigationIcon="@mipmap/back">
-
-
-    </android.support.v7.widget.Toolbar>
-
+        app:navigationIcon="@mipmap/back"/>
 
     <TextView
         android:id="@+id/tv_percent"

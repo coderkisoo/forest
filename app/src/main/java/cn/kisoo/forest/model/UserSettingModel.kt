@@ -19,7 +19,7 @@ object UserSettingModel {
 
     var mContext: Context? = null
 
-    var mWhiteList: Whitelist = lazy {
+    val mWhiteList: Whitelist = lazy {
         var list = Realm.getDefaultInstance().where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
         if (list == null) {
             list = Whitelist()
@@ -28,7 +28,7 @@ object UserSettingModel {
     }.value
 
 
-    var mSettings: Settings = lazy {
+    val mSettings: Settings = lazy {
         var settings = Gson().fromJson(mWhiteList.wlistName, Settings::class.java)
         if (settings == null) {
             settings = Settings()
@@ -50,16 +50,14 @@ object UserSettingModel {
             KEY_DESTROY_TASK -> mSettings.destroyTask = open
             KEY_OPEN_WHITE_LIST -> mSettings.openWhiteList = open
         }
-        val result = Realm.getDefaultInstance().where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
-        if (result == null) {
-            Realm.getDefaultInstance().executeTransaction {
+        Realm.getDefaultInstance().executeTransaction {
+            val result = it.where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
+            if (result != null) {
+                result.wlistName = Gson().toJson(mSettings)
+            } else {
                 val list = it.createObject(Whitelist::class.java, UserAccountModel.UID())
                 list.wlistName = Gson().toJson(mSettings)
             }
-        } else {
-            Realm.getDefaultInstance().beginTransaction()
-            result.wlistName = Gson().toJson(mSettings)
-            Realm.getDefaultInstance().commitTransaction()
         }
     }
 
@@ -79,7 +77,7 @@ object UserSettingModel {
     }
 
     fun clearData() {
-        Realm.getDefaultInstance().executeTransaction{
+        Realm.getDefaultInstance().executeTransaction {
             it.delete(Whitelist::class.java)
         }
     }
@@ -92,16 +90,14 @@ object UserSettingModel {
         mSettings.openWhiteList = false
         mSettings.senseMore = false
         mSettings.destroyTask = true
-        val result = Realm.getDefaultInstance().where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
-        if (result == null) {
-            Realm.getDefaultInstance().executeTransaction {
+        Realm.getDefaultInstance().executeTransaction {
+            val result = it.where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
+            if (result != null) {
+                result.wlistName = Gson().toJson(mSettings)
+            } else {
                 val list = it.createObject(Whitelist::class.java, UserAccountModel.UID())
                 list.wlistName = Gson().toJson(mSettings)
             }
-        } else {
-            Realm.getDefaultInstance().beginTransaction()
-            result.wlistName = Gson().toJson(mSettings)
-            Realm.getDefaultInstance().commitTransaction()
         }
     }
 

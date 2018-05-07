@@ -1,15 +1,16 @@
 package cn.kisoo.forest.ui.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.toast
 import cn.kisoo.forest.R
+import cn.kisoo.forest.model.UserSettingModel
 import cn.kisoo.forest.presenter.activity.TimeDownActivityPresenter
 import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.iview.activity.ITimeDownActivityView
@@ -34,8 +35,15 @@ class TimeDownActivity : BaseActivity<TimeDownActivityPresenter>(), TimeDownActi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        keepScreenOn()
         initViews()
         startTiming()
+    }
+
+    private fun keepScreenOn() {
+        if (UserSettingModel.mSettings.keepLight) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
     }
 
     private fun startTiming() {
@@ -56,8 +64,12 @@ class TimeDownActivity : BaseActivity<TimeDownActivityPresenter>(), TimeDownActi
 
     @SuppressLint("SetTextI18n")
     override fun onTick(minute: Int, mills: Int) {
-        mTv_direction?.text = "$minute:$mills"
-        Logger.d("$minute:$mills")
+        var millStr = mills.toString()
+        if (mills < 10) {
+            millStr = "0$millStr"
+        }
+        mTv_direction?.text = "$minute:$millStr"
+        Logger.d("$minute:$millStr")
     }
 
     override fun onFinish() {
@@ -66,25 +78,28 @@ class TimeDownActivity : BaseActivity<TimeDownActivityPresenter>(), TimeDownActi
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.btn_cancel -> {
-                toast(R.string.cancel_result, Toast.LENGTH_SHORT)
-                AlertDialog
-                        .Builder(this)
-                        .setTitle(R.string.hint)
-                        .setMessage(R.string.cancel_timedown_dialog_message)
-                        .setPositiveButton(R.string.text_positive) { dialog, _ ->
-                            dialog.dismiss()
-                            val intent = Intent()
-                            intent.setClass(this, LoseActivity::class.java)
-                            presenter.createLoseIntent(intent)
-                            finish()
-                            startActivity(intent)
-                        }
-                        .setNegativeButton(R.string.text_cancel) { dialog, _ -> dialog.dismiss() }
-                        .show()
-            }
+            R.id.btn_cancel -> cancel()
         }
 
+    }
+
+    override fun onBackPressed() {
+        cancel()
+    }
+
+    private fun cancel() {
+        toast(R.string.cancel_result, Toast.LENGTH_SHORT)
+        AlertDialog
+                .Builder(this)
+                .setTitle(R.string.hint)
+                .setMessage(R.string.cancel_timedown_dialog_message)
+                .setPositiveButton(R.string.text_positive) { dialog, _ ->
+                    dialog.dismiss()
+                    finish()
+                    presenter.shutDownCurrentTask()
+                }
+                .setNegativeButton(R.string.text_cancel) { dialog, _ -> dialog.dismiss() }
+                .show()
     }
 
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Forest</string>
+    <string name="app_name">Never give up</string>
     <string name="setting">设置</string>
     <string name="main_page">主页面</string>
     <string name="minute">分钟</string>
@@ -12,7 +12,7 @@
     <string name="text_cancel">容我想想</string>
     <string name="cancel_timedown_dialog_message">如果现在停止，乌鸦就会因为没水喝而渴死，望三思！</string>
     <string name="cancel_result">如果现在停止，乌鸦就会因为没水喝而渴死，望三思！</string>
-    <string name="do_next">下次再说</string>
+    <string name="do_next">再试一次</string>
     <string name="success_percent">成功时长占比%1$d%%</string>
     <string name="bird_died">因为你的半途而废，小乌鸦渴死了</string>
     <string name="option">选项</string>
@@ -29,6 +29,7 @@
     <string name="pwd_not_same">两次输入的密码不一致</string>
     <string name="please_select_head">请选择头像</string>
     <string name="school_timetables">课程表</string>
+    <string name="task_list">任务列表</string>
     <string name="user_info">个人信息</string>
     <string name="confirm">确认</string>
     <string name="old_password">原密码</string>
@@ -40,5 +41,6 @@
     <string name="password_update">密码修改</string>
     <string name="confirm_password">确认密码</string>
     <string name="login_out">退出</string>
+    <string name="white_list">白名单</string>
 
 </resources>

@@ -20,6 +20,7 @@ import cn.kisoo.forest.ui.BaseActivity
 import cn.kisoo.forest.ui.fragment.MainFragment
 import cn.kisoo.forest.ui.fragment.SchoolTableFragment
 import cn.kisoo.forest.ui.fragment.SettingFragment
+import cn.kisoo.forest.ui.fragment.TaskListFragment
 import cn.kisoo.forest.ui.iview.activity.IMainActivityView
 import com.jude.beam.bijection.RequiresPresenter
 import de.hdodenhof.circleimageview.CircleImageView
@@ -37,8 +38,8 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
     var mTVName: TextView? = null
     var mFlContent: FrameLayout? = null
     var mDlContainer: DrawerLayout? = null
-    val mFragmentList = lazy { arrayListOf(MainFragment(), SchoolTableFragment(), SettingFragment()) }.value
-    val mTitles = arrayListOf(R.string.main_page, R.string.school_timetables, R.string.setting)
+    val mFragmentList = lazy { arrayListOf(MainFragment(), TaskListFragment(), SchoolTableFragment(), SettingFragment()) }.value
+    val mTitles = arrayListOf(R.string.main_page, R.string.task_list, R.string.school_timetables, R.string.setting)
     var mCurrentIndex = -1
     var mCurrentFragment: Fragment? = null
     var mNavigationView: NavigationView? = null
@@ -161,6 +162,7 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_main -> presenter.selectMainPage()
+            R.id.menu_task_list -> presenter.selectTaskList()
             R.id.menu_school_timetables -> presenter.selectSchoolTable()
             R.id.menu_setting -> presenter.selectSetting()
             R.id.menu_login_out -> finish()

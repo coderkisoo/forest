@@ -34,14 +34,21 @@ class MainActivityPresenter : Presenter<IMainActivityView>() {
         view.selectFragment(0)
     }
 
-    fun selectSchoolTable() {
+
+    fun selectTaskList() {
         view.closeDrawer()
         view.selectFragment(1)
     }
 
-    fun selectSetting() {
+    fun selectSchoolTable() {
         view.closeDrawer()
         view.selectFragment(2)
     }
+
+    fun selectSetting() {
+        view.closeDrawer()
+        view.selectFragment(3)
+    }
+
 
 }

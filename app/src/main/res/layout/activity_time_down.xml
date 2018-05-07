@@ -9,11 +9,21 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        android:textStyle="italic"
+        android:text="@string/motto_calm" />
+
     <cn.kisoo.forest.view.CircleWidget
         android:id="@+id/cw_widget"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="30dp"
         app:bottom_color="#6ADBE8"
         app:min_top_color="#FF939C"
         app:pic_padding="-1dp"
@@ -28,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="#ffffff"
-        android:textSize="28sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         tools:text="120:00" />
 

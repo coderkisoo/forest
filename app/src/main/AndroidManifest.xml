@@ -3,6 +3,7 @@
     package="cn.kisoo.forest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".constant.App"
@@ -12,19 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.MainActivity"
+            android:name=".ui.activity.AdsActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ui.activity.TimeDownActivity" />
-        <activity android:name=".ui.activity.LoseActivity" />
+        <activity android:name=".ui.activity.ResultShowActivity" />
         <activity
             android:name=".ui.activity.RegisterActivity"
             android:launchMode="singleTask" />
-        <!--<activity android:name=".ui.activity.MainActivity" />-->
+        <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.UserActivity" />
 

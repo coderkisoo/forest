@@ -11,16 +11,22 @@ import com.jude.beam.expansion.BeamBaseActivity
 abstract class BaseActivity<T : Presenter<*>> : BeamBaseActivity<T>() {
 
     private var mTlTitle: Toolbar? = null
+    private var mHasPage = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         super.onCreate(savedInstanceState)
-        setContentView(layoutId())
-        mTlTitle = findViewById(R.id.tl_title)
-        setSupportActionBar(mTlTitle)
+        mHasPage = layoutId() != 0
+        if (mHasPage) {
+            setContentView(layoutId())
+            mTlTitle = findViewById(R.id.tl_title)
+            setSupportActionBar(mTlTitle)
+        }
     }
 
-    abstract fun layoutId(): Int
+    open fun layoutId(): Int {
+        return 0
+    }
 
 
     fun getContext(): Context {
