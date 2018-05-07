@@ -1,7 +1,9 @@
 package cn.kisoo.forest.presenter.activity
 
 import android.content.Intent
+import cn.kisoo.forest.constant.RequestCode
 import cn.kisoo.forest.model.UserAccountModel
+import cn.kisoo.forest.ui.activity.AdsActivity
 import cn.kisoo.forest.ui.activity.AwardActivity
 import cn.kisoo.forest.ui.activity.UserActivity
 import cn.kisoo.forest.ui.iview.activity.IMainActivityView
@@ -48,6 +50,12 @@ class MainActivityPresenter : Presenter<IMainActivityView>() {
     fun selectSetting() {
         view.closeDrawer()
         view.selectFragment(3)
+    }
+
+    fun finish() {
+        val intent = Intent(view.getContext(), AdsActivity::class.java)
+        intent.putExtra(RequestCode.REQUEST_CODE, RequestCode.CLOSE_APP)
+        view.startActivity(intent)
     }
 
 

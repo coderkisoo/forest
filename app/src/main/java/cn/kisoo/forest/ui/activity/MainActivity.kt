@@ -65,6 +65,8 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
         mNavigationView?.setNavigationItemSelectedListener(this)
         mCIVHead = view?.findViewById(R.id.civ_head)
         mTVName = view?.findViewById(R.id.tv_name)
+        presenter.updateHead()
+        presenter.updateName()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -165,9 +167,13 @@ class MainActivity : BaseActivity<MainActivityPresenter>(), View.OnClickListener
             R.id.menu_task_list -> presenter.selectTaskList()
             R.id.menu_school_timetables -> presenter.selectSchoolTable()
             R.id.menu_setting -> presenter.selectSetting()
-            R.id.menu_login_out -> finish()
+            R.id.menu_login_out -> presenter.finish()
         }
         return false
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        presenter.finish()
+    }
 }

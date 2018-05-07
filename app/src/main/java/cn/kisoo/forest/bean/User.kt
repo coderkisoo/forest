@@ -9,6 +9,8 @@ class User {
 
     var uPicture: String? = null  //图片
 
+    var uToken: String? = null  //图片
+
 
     var uName: String? = null  //昵称
 

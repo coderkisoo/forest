@@ -20,26 +20,29 @@ object UserAccountModel {
     private const val KEY_HEAD = "key_head"
     private const val KEY_UID = "key_uid"
     private const val KEY_USERNAME = "key_username"
-    private const val KET_NAME = "key_name"
+    private const val KEY_NAME = "key_name"
     private const val KEY_SCHOOL_NUM = "key_school_num"
-
 
     fun init(context: Context) {
         this.mContext = context
     }
 
     fun isLogin(): Boolean {
-//        return UID() != "-1"
-        return true
+        return UID() != "-1"
+//        return true
     }
 
 
-    fun initUser(user: User) {
+    fun initUser(user: User?) {
+        if (user == null) {
+            return
+        }
         val sharedPreferences = mContext?.getSharedPreferences(USER_SP, Context.MODE_PRIVATE)
         sharedPreferences?.edit {
             putInt(KEY_HEAD, Integer.valueOf(user.uPicture))
             putString(KEY_USERNAME, user.uUsername)
             putString(KEY_SCHOOL_NUM, user.uSchoolnumber)
+            putString(KEY_NAME, user.uName)
             putString(KEY_UID, user.uId.toString())
         }
     }
@@ -80,7 +83,7 @@ object UserAccountModel {
 
     fun currentName(): String {
         val sharedPreferences = mContext?.getSharedPreferences(USER_SP, Context.MODE_PRIVATE)
-        return sharedPreferences!!.getString(KET_NAME, "桥寻")
+        return sharedPreferences!!.getString(KEY_NAME, "桥寻")
     }
 
     fun currentSchoolNum(): String {

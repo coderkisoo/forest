@@ -42,5 +42,6 @@
     <string name="confirm_password">确认密码</string>
     <string name="login_out">退出</string>
     <string name="white_list">白名单</string>
+    <string name="login_success">登录成功</string>
 
 </resources>

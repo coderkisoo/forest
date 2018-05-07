@@ -2,6 +2,7 @@ package cn.kisoo.forest.ui.activity
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import cn.kisoo.forest.R
@@ -17,6 +18,7 @@ class LoginActivity : BaseActivity<LoginActivityPresenter>(), View.OnClickListen
     var mTVRegister: TextView? = null
     var mETPassword: EditText? = null
     var mETAccount: EditText? = null
+    var mBTNLogin: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +30,13 @@ class LoginActivity : BaseActivity<LoginActivityPresenter>(), View.OnClickListen
         mETPassword = findViewById(R.id.et_password)
         mTVRegister = findViewById(R.id.tv_register)
         mTVRegister?.setOnClickListener(this)
+        mBTNLogin?.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.tv_register -> presenter.goRegister()
+            R.id.btn_login -> presenter.login(mETAccount?.text.toString(),mETPassword?.text.toString())
         }
     }
 

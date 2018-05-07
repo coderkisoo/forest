@@ -11,6 +11,7 @@ import io.realm.Realm
 
 
 class App : Application() {
+
     override fun onCreate() {
         super.onCreate()
         Beam.init(this)
@@ -20,4 +21,5 @@ class App : Application() {
         UserSettingModel.init(this)
         Logger.addLogAdapter(AndroidLogAdapter())
     }
+
 }

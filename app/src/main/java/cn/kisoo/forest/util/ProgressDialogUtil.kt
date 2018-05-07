@@ -8,8 +8,15 @@ object ProgressDialogUtil {
     var progressDialog: ProgressDialog? = null
 
     fun showProgressDialog(context: Context, title: String, message: String) {
+        dismissDialog()
         progressDialog = ProgressDialog.show(context, title, message)
     }
 
-    fun dissmissDialog() = progressDialog?.dismiss()
+    fun dismissDialog() {
+        progressDialog?.let {
+            if (it.isShowing) {
+                it.dismiss()
+            }
+        }
+    }
 }

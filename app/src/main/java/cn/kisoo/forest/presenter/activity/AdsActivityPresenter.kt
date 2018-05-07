@@ -16,7 +16,7 @@ class AdsActivityPresenter : Presenter<IAdsActivityView>() {
     fun handleTask() {
         if (UserAccountModel.isLogin()) {
             TaskListModel.failAllTask()
-            TaskListModel.uploadTask(object :TaskListModel.FetchTaskCallback{
+            TaskListModel.uploadTask(object : TaskListModel.FetchTaskCallback {
                 override fun onTaskFetch(task: List<Task>) {
                     RetrofitModel.uploadTasks(task)
                 }
@@ -31,8 +31,11 @@ class AdsActivityPresenter : Presenter<IAdsActivityView>() {
         } else {
             intent.setClass(view.getContext(), LoginActivity::class.java)
         }
-        view.finish()
         view.startActivity(intent)
+    }
+
+    fun closeApp() {
+        view.finish()
     }
 
 }

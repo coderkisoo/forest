@@ -1,7 +1,6 @@
 package cn.kisoo.forest.ui.activity
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -26,14 +25,11 @@ class RegisterActivity : BaseActivity<RegisterActivityPresenter>(), View.OnClick
     var mETPassword2: EditText? = null
     var mTVGoLogin: TextView? = null
     var mBTNRegister: Button? = null
-    var mCurrentDialog: AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initViews()
     }
-
-
 
     private fun initViews() {
         mIVHead = findViewById(R.id.iv_head)

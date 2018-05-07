@@ -23,8 +23,10 @@ object ToastUtils {
         context?.toast(resId, Toast.LENGTH_LONG)
     }
 
-    fun shortToast(info: String) {
-        context?.toast(info, Toast.LENGTH_LONG)
+    fun shortToast(info: String?) {
+        info?.let {
+            context?.toast(it, Toast.LENGTH_LONG)
+        }
     }
 
 
