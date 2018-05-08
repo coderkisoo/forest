@@ -9,6 +9,8 @@ import cn.kisoo.forest.model.UserSettingModel.KEY_OPEN_WHITE_LIST
 import cn.kisoo.forest.model.UserSettingModel.KEY_SENSE_MORE
 import cn.kisoo.forest.ui.activity.AdsActivity
 import cn.kisoo.forest.ui.iview.fragment.ISettingFragmentView
+import cn.kisoo.forest.util.ProgressDialogUtil
+import cn.kisoo.forest.util.ToastUtils
 import com.jude.beam.expansion.BeamBasePresenter
 
 class SettingFragmentPresenter : BeamBasePresenter<ISettingFragmentView>() {
@@ -57,7 +59,17 @@ class SettingFragmentPresenter : BeamBasePresenter<ISettingFragmentView>() {
     }
 
     fun uploadSettings() {
-        UserSettingModel.uploadSettings()
+        ProgressDialogUtil.showProgressDialog(view.context(), "提示：", "正在上传中，请稍后。。。")
+        UserSettingModel.uploadSettings(object : UserAccountModel.UserInfoUpdateListener {
+            override fun success() {
+                ProgressDialogUtil.dismissDialog()
+                ToastUtils.shortToast("上传成功")
+            }
+
+            override fun fail() {
+                ProgressDialogUtil.dismissDialog()
+            }
+        })
     }
 
 }

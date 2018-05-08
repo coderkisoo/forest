@@ -5,6 +5,7 @@ import android.content.Context
 import cn.kisoo.forest.bean.Application
 import cn.kisoo.forest.bean.Settings
 import cn.kisoo.forest.bean.Whitelist
+import cn.kisoo.forest.model.UserAccountModel.SETTINGS_UPDATE
 import com.google.gson.Gson
 import io.realm.Realm
 
@@ -61,6 +62,16 @@ object UserSettingModel {
         }
     }
 
+    fun updateSettings(settings: String?) {
+        settings?.let {
+            mWhiteList.wlistName = it
+            if (mSettings.update(Gson().fromJson(mWhiteList.wlistName, Settings::class.java))) {
+                UserAccountModel.notifyUpdate(SETTINGS_UPDATE)
+            }
+        }
+
+    }
+
     fun updateSettingsApplist(list: ArrayList<Application>) {
         mSettings.appList.clear()
         mSettings.appList.addAll(list)
@@ -71,9 +82,9 @@ object UserSettingModel {
         realm.commitTransaction()
     }
 
-    fun uploadSettings() {
+    fun uploadSettings(listener: UserAccountModel.UserInfoUpdateListener) {
         val result = Realm.getDefaultInstance().where(Whitelist::class.java).equalTo("uId", UserAccountModel.UID()).findFirst()
-        //todo 转化result 上传 即可
+        RetrofitModel.uploadSetting(result.wlistName, listener)
     }
 
     fun clearData() {

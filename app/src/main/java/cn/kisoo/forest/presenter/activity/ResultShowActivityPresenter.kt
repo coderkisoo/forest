@@ -14,7 +14,7 @@ class ResultShowActivityPresenter : Presenter<IResultShowActivityView>() {
     //上传任务
     fun uploadTasks() {
         TaskListModel.fetchTask(object : TaskListModel.FetchTaskCallback {
-            override fun onTaskFetch(task: List<Task>) {
+            override fun onTaskFetch(task: Array<Task>) {
                 RetrofitModel.uploadTasks(task)
             }
         })

@@ -109,6 +109,7 @@ object UserAccountModel {
     const val HEAD_UPDATE = 1
     const val NAME_UPDATE = 2
     const val SCHOOL_NUM_UPDATE = 3
+    const val SETTINGS_UPDATE = 4
 
     interface UserInfoUpdateListener{
         fun success()

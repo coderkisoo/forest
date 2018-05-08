@@ -9,13 +9,19 @@ import android.widget.RelativeLayout
 import android.widget.Switch
 import android.widget.TextView
 import cn.kisoo.forest.R
+import cn.kisoo.forest.model.UserAccountModel
 import cn.kisoo.forest.presenter.fragment.SettingFragmentPresenter
 import cn.kisoo.forest.ui.BaseFragment
 import cn.kisoo.forest.ui.iview.fragment.ISettingFragmentView
 import com.jude.beam.bijection.RequiresPresenter
 
 @RequiresPresenter(SettingFragmentPresenter::class)
-class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragmentView, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragmentView, View.OnClickListener, CompoundButton.OnCheckedChangeListener, UserAccountModel.UserUpdateListener {
+    override fun onUserStatusUpdate(status: Int) {
+        when (status) {
+            UserAccountModel.SETTINGS_UPDATE -> presenter.updateSettingPage()
+        }
+    }
 
     var mRootView: View? = null
 
@@ -37,6 +43,7 @@ class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragme
         mRootView = inflater.inflate(R.layout.fragment_setting, null)
         initViews()
         presenter.updateSettingPage()
+        UserAccountModel.registerListener(this)
         return mRootView
     }
 
@@ -120,4 +127,8 @@ class SettingFragment : BaseFragment<SettingFragmentPresenter>(), ISettingFragme
         mSTNDestroyTask?.isChecked = open
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        UserAccountModel.unRegisterListener(this)
+    }
 }

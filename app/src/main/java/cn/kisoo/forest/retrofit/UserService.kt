@@ -58,11 +58,11 @@ interface UserService {
                     @Query("isSuccess") isSuccess: String): Observable<Result<*>>
 
     @POST(URL.GET_WHITE_LIST)
-    fun getWhiteList(@Query("uid") uid: String): Observable<Result<*>>
+    fun getWhiteList(@Query("uid") uid: String): Observable<Result<String>>
 
     @POST(URL.UPLOAD_WHITE_LIST)
     fun insertWhiteList(@Query("uId") uid: String,
-                        @Query("wlistName") wlistName: String): Observable<Result<*>>
+                        @Query("wlistName") wlistName: String?): Observable<Result<Any>>
 
     @POST(URL.MODIFY_WHITE_LIST)
     fun modifyWhiteList(@Query("uid") uid: String,

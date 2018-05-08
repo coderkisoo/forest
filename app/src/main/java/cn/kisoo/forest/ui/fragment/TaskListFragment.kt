@@ -39,7 +39,7 @@ class TaskListFragment : BaseFragment<TaskListFragmentPresenter>(), ITaskListFra
         srl_refresh?.isRefreshing = refresh
     }
 
-    override fun showDatas(task: List<Task>) {
+    override fun showDatas(task: Array<Task>) {
         mTaskListAdapter.setData(task)
     }
 

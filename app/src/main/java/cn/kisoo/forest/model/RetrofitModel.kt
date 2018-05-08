@@ -12,6 +12,7 @@ import cn.kisoo.forest.presenter.activity.RegisterActivityPresenter
 import cn.kisoo.forest.retrofit.UserService
 import cn.kisoo.forest.util.ToastUtils
 import io.reactivex.ObservableTransformer
+import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -31,7 +32,7 @@ object RetrofitModel {
 
     fun uploadTasks(tasks: Array<Task>) {
         tasks.forEach {
-            service.insertTask(it.tId.toString(),UserAccountModel.UID(),it.tLength.toString(),it.tStarttime,it.tSuccessLength.toString(),it.isSuccess.toString())
+            service.insertTask(it.tId.toString(), UserAccountModel.UID(), it.tLength.toString(), it.tStarttime, it.tSuccessLength.toString(), it.isSuccess.toString())
 
         }
     }
@@ -57,6 +58,7 @@ object RetrofitModel {
                     override fun onNext(t: Result<User>) {
                         if (StatusCode.LOGINSUCCESS == t.code) {
                             listener.success()
+                            downloadWhiteList()
                         } else {
                             listener.fail()
                             ToastUtils.shortToast(t.message)
@@ -69,6 +71,27 @@ object RetrofitModel {
                     }
 
                 })
+    }
+
+    private fun downloadWhiteList() {
+        service.getWhiteList(UserAccountModel.UID()).compose(applySchedulers())
+                .subscribe {
+                    object : io.reactivex.Observer<Result<String>> {
+                        override fun onComplete() {
+                        }
+
+                        override fun onSubscribe(d: Disposable) {}
+
+                        override fun onNext(result: Result<String>) {
+                            UserSettingModel.updateSettings(result.data)
+                        }
+
+                        override fun onError(e: Throwable) {
+                            ToastUtils.shortToast(e.localizedMessage)
+                        }
+
+                    }
+                }
     }
 
     fun register(account: String, name: String, headType: String, password: String, schoolNum: String, registerListener: RegisterActivityPresenter.RegisterListener) {
@@ -101,8 +124,9 @@ object RetrofitModel {
     fun uploadHead(headType: Int, listener: UserAccountModel.UserInfoUpdateListener) {
         service.modifyHead(UserAccountModel.UID(), headType.toString())
                 .compose(applySchedulers())
-                .subscribe(object : Observer(listener) {
-                    override fun onSuccess() {
+                .subscribe(object : UserObserver<User>(listener) {
+                    override fun onSuccess(user: User?) {
+                        UserAccountModel.initUser(user)
                         UserAccountModel.notifyUpdate(UserAccountModel.HEAD_UPDATE)
                     }
                 })
@@ -111,8 +135,9 @@ object RetrofitModel {
     fun uploadName(name: String, listener: UserAccountModel.UserInfoUpdateListener) {
         service.modifyName(UserAccountModel.UID(), name)
                 .compose(applySchedulers())
-                .subscribe(object : Observer(listener) {
-                    override fun onSuccess() {
+                .subscribe(object : UserObserver<User>(listener) {
+                    override fun onSuccess(user: User?) {
+                        UserAccountModel.initUser(user)
                         UserAccountModel.notifyUpdate(UserAccountModel.HEAD_UPDATE)
                     }
                 })
@@ -121,8 +146,9 @@ object RetrofitModel {
     fun uploadSchoolNum(schoolNum: String, listener: UserAccountModel.UserInfoUpdateListener) {
         service.modifySchoolNum(UserAccountModel.UID(), schoolNum)
                 .compose(applySchedulers())
-                .subscribe(object : Observer(listener) {
-                    override fun onSuccess() {
+                .subscribe(object : UserObserver<User>(listener) {
+                    override fun onSuccess(user: User?) {
+                        UserAccountModel.initUser(user)
                         UserAccountModel.notifyUpdate(UserAccountModel.HEAD_UPDATE)
                     }
                 })
@@ -131,14 +157,25 @@ object RetrofitModel {
     fun updatePassword(password: String, listener: UserAccountModel.UserInfoUpdateListener) {
         service.modifyPwd(UserAccountModel.UID(), password)
                 .compose(applySchedulers())
-                .subscribe(object : Observer(listener) {
-                    override fun onSuccess() {
+                .subscribe(object : UserObserver<User>(listener) {
+                    override fun onSuccess(t: User?) {
+                        UserAccountModel.initUser(t)
                         UserAccountModel.notifyUpdate(UserAccountModel.PASSWORD_UPDATE)
                     }
                 })
     }
 
-    abstract class Observer(listener: UserAccountModel.UserInfoUpdateListener) : io.reactivex.Observer<Result<User>> {
+    fun uploadSetting(settings: String?, listener: UserAccountModel.UserInfoUpdateListener) {
+        service.insertWhiteList(UserAccountModel.UID(), settings)
+                .compose(applySchedulers())
+                .subscribe(object : UserObserver<Any>(listener) {
+                    override fun onSuccess(t: Any?) {
+                        listener.success()
+                    }
+                })
+    }
+
+    abstract class UserObserver<DATA>(listener: UserAccountModel.UserInfoUpdateListener) : Observer<Result<DATA>> {
         val mListener = listener
 
         override fun onComplete() {
@@ -147,17 +184,16 @@ object RetrofitModel {
 
         override fun onSubscribe(d: Disposable) {}
 
-        override fun onNext(t: Result<User>) {
+        override fun onNext(t: Result<DATA>) {
             if (StatusCode.SUCCESS == t.code) {
                 mListener.success()
-                UserAccountModel.initUser(t.data)
-                onSuccess()
+                onSuccess(t.data)
             } else {
                 onError(Throwable("${t.message}"))
             }
         }
 
-        abstract fun onSuccess()
+        abstract fun onSuccess(t: DATA?)
 
         override fun onError(e: Throwable) {
             mListener.fail()

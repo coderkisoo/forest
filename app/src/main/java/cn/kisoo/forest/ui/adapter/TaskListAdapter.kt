@@ -54,7 +54,7 @@ class TaskListAdapter : BaseAdapter() {
         val tv_date = view.findViewById<TextView>(R.id.tv_date)
     }
 
-    fun setData(tasks: List<Task>) {
+    fun setData(tasks: Array<Task>) {
         mTasks.clear()
         mTasks.addAll(tasks)
         mTasks.sortWith(Comparator { task1, task2 -> (task2.tStarttime!!.toLong() - task1.tStarttime!!.toLong()).toInt() })

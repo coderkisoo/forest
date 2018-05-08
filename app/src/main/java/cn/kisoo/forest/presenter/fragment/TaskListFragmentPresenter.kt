@@ -10,7 +10,7 @@ class TaskListFragmentPresenter : BeamBasePresenter<ITaskListFragmentView>() {
     fun requestTasks() {
         view.refresh(true)
         TaskListModel.fetchTask(object :TaskListModel.FetchTaskCallback{
-            override fun onTaskFetch(task: List<Task>) {
+            override fun onTaskFetch(task: Array<Task>) {
                 view.refresh(false)
                 view.showDatas(task)
             }

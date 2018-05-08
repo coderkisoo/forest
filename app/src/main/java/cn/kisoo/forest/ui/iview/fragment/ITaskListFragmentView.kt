@@ -4,6 +4,6 @@ import cn.kisoo.forest.bean.Task
 
 interface ITaskListFragmentView : IBaseFragmentView {
     fun refresh(refresh: Boolean)
-    fun showDatas(task: List<Task>)
+    fun showDatas(task: Array<Task>)
 
 }

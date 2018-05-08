@@ -7,8 +7,11 @@ object ProgressDialogUtil {
 
     var progressDialog: ProgressDialog? = null
 
-    fun showProgressDialog(context: Context, title: String, message: String) {
+    fun showProgressDialog(context: Context?, title: String, message: String) {
         dismissDialog()
+        if (context == null) {
+            return
+        }
         progressDialog = ProgressDialog.show(context, title, message)
     }
 
