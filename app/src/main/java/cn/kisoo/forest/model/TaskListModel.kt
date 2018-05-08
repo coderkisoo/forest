@@ -2,14 +2,13 @@ package cn.kisoo.forest.model
 
 import cn.kisoo.forest.bean.Task
 import io.realm.Realm
-import java.util.*
 
 object TaskListModel {
 
     fun addTask(minute: Int) {
         Realm.getDefaultInstance().executeTransaction {
             val task = it.createObject(Task::class.java, System.currentTimeMillis().toInt())
-            task.tStarttime = Date()
+            task.tStarttime = System.currentTimeMillis().toString()
             task.tLength = minute
             task.uId = UserAccountModel.UID()
             task.isSuccess = (-1).toByte()
@@ -67,6 +66,7 @@ object TaskListModel {
             val results = it.where(Task::class.java)
                     .equalTo("uId", UserAccountModel.UID())
                     .findAll()
+                    .toTypedArray()
             if (results.isNotEmpty()) {
                 fetchTaskCallback.onTaskFetch(results)
             }
@@ -80,6 +80,7 @@ object TaskListModel {
                     .equalTo("hasUpload", false)
                     .notEqualTo("isSuccess", (-1).toByte())
                     .findAll()
+                    .toTypedArray()
             if (results.isNotEmpty()) {
                 fetchTaskCallback.onTaskFetch(results)
             }
@@ -87,7 +88,7 @@ object TaskListModel {
     }
 
     interface FetchTaskCallback {
-        fun onTaskFetch(task: List<Task>)
+        fun onTaskFetch(task: Array<Task>)
     }
 
 }

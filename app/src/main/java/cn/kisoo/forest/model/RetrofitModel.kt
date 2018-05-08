@@ -11,7 +11,7 @@ import cn.kisoo.forest.presenter.activity.LoginActivityPresenter
 import cn.kisoo.forest.presenter.activity.RegisterActivityPresenter
 import cn.kisoo.forest.retrofit.UserService
 import cn.kisoo.forest.util.ToastUtils
-import io.reactivex.Observer
+import io.reactivex.ObservableTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -29,8 +29,11 @@ object RetrofitModel {
             .build()
             .create(UserService::class.java)
 
-    fun uploadTasks(tasks: List<Task>) {
+    fun uploadTasks(tasks: Array<Task>) {
+        tasks.forEach {
+            service.insertTask(it.tId.toString(),UserAccountModel.UID(),it.tLength.toString(),it.tStarttime,it.tSuccessLength.toString(),it.isSuccess.toString())
 
+        }
     }
 
     fun login(account: String, password: String, listener: LoginActivityPresenter.LoginListener) {
@@ -43,7 +46,7 @@ object RetrofitModel {
                     }
                 }
                 .observeOn(AndroidSchedulers.mainThread())//最后在主线程中执行
-                .subscribe(object : Observer<Result<User>> {
+                .subscribe(object : io.reactivex.Observer<Result<User>> {
                     override fun onComplete() {
 
                         ToastUtils.shortToast(R.string.login_success)
@@ -70,10 +73,8 @@ object RetrofitModel {
 
     fun register(account: String, name: String, headType: String, password: String, schoolNum: String, registerListener: RegisterActivityPresenter.RegisterListener) {
         service.register(account, headType, name, schoolNum, password)
-                .subscribeOn(Schedulers.newThread())//请求在新的线程中执行
-                .observeOn(Schedulers.io())         //请求完成后在io线程中执行
-                .observeOn(AndroidSchedulers.mainThread())//最后在主线程中执行
-                .subscribe(object : Observer<ResultEmpty> {
+                .compose(applySchedulers())//最后在主线程中执行
+                .subscribe(object : io.reactivex.Observer<ResultEmpty> {
                     override fun onComplete() {
                         ToastUtils.shortToast(R.string.login_success)
                     }
@@ -96,5 +97,80 @@ object RetrofitModel {
 
                 })
     }
+
+    fun uploadHead(headType: Int, listener: UserAccountModel.UserInfoUpdateListener) {
+        service.modifyHead(UserAccountModel.UID(), headType.toString())
+                .compose(applySchedulers())
+                .subscribe(object : Observer(listener) {
+                    override fun onSuccess() {
+                        UserAccountModel.notifyUpdate(UserAccountModel.HEAD_UPDATE)
+                    }
+                })
+    }
+
+    fun uploadName(name: String, listener: UserAccountModel.UserInfoUpdateListener) {
+        service.modifyName(UserAccountModel.UID(), name)
+                .compose(applySchedulers())
+                .subscribe(object : Observer(listener) {
+                    override fun onSuccess() {
+                        UserAccountModel.notifyUpdate(UserAccountModel.HEAD_UPDATE)
+                    }
+                })
+    }
+
+    fun uploadSchoolNum(schoolNum: String, listener: UserAccountModel.UserInfoUpdateListener) {
+        service.modifySchoolNum(UserAccountModel.UID(), schoolNum)
+                .compose(applySchedulers())
+                .subscribe(object : Observer(listener) {
+                    override fun onSuccess() {
+                        UserAccountModel.notifyUpdate(UserAccountModel.HEAD_UPDATE)
+                    }
+                })
+    }
+
+    fun updatePassword(password: String, listener: UserAccountModel.UserInfoUpdateListener) {
+        service.modifyPwd(UserAccountModel.UID(), password)
+                .compose(applySchedulers())
+                .subscribe(object : Observer(listener) {
+                    override fun onSuccess() {
+                        UserAccountModel.notifyUpdate(UserAccountModel.PASSWORD_UPDATE)
+                    }
+                })
+    }
+
+    abstract class Observer(listener: UserAccountModel.UserInfoUpdateListener) : io.reactivex.Observer<Result<User>> {
+        val mListener = listener
+
+        override fun onComplete() {
+            mListener.success()
+        }
+
+        override fun onSubscribe(d: Disposable) {}
+
+        override fun onNext(t: Result<User>) {
+            if (StatusCode.SUCCESS == t.code) {
+                mListener.success()
+                UserAccountModel.initUser(t.data)
+                onSuccess()
+            } else {
+                onError(Throwable("${t.message}"))
+            }
+        }
+
+        abstract fun onSuccess()
+
+        override fun onError(e: Throwable) {
+            mListener.fail()
+            ToastUtils.shortToast(e.localizedMessage)
+        }
+    }
+
+    fun <T> applySchedulers(): ObservableTransformer<T, T> {
+        return ObservableTransformer { upstream ->
+            upstream.subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+        }
+    }
+
 
 }

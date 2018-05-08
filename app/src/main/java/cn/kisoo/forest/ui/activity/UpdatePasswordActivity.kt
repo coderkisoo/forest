@@ -14,7 +14,6 @@ import com.jude.beam.bijection.RequiresPresenter
 class UpdatePasswordActivity : BaseActivity<UpdatePasswordActivityPresenter>(), IUpdatePasswordActivityView {
     override fun layoutId(): Int = R.layout.activity_update_password
 
-    var mETPassword1: EditText? = null
     var mETPassword2: EditText? = null
     var mETPassword3: EditText? = null
 
@@ -24,7 +23,6 @@ class UpdatePasswordActivity : BaseActivity<UpdatePasswordActivityPresenter>(), 
     }
 
     private fun initViews() {
-        mETPassword1 = findViewById(R.id.et_password1)
         mETPassword2 = findViewById(R.id.et_password2)
         mETPassword3 = findViewById(R.id.et_password3)
     }
@@ -37,7 +35,7 @@ class UpdatePasswordActivity : BaseActivity<UpdatePasswordActivityPresenter>(), 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> finish()
-            R.id.menu_confirm -> presenter.confirmUpdatePassword(mETPassword1?.text.toString(), mETPassword2?.text.toString(), mETPassword3?.text.toString())
+            R.id.menu_confirm -> presenter.confirmUpdatePassword(mETPassword2?.text.toString(), mETPassword3?.text.toString())
         }
         return super.onOptionsItemSelected(item)
     }

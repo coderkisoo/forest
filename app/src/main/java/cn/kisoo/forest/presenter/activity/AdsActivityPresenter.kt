@@ -17,7 +17,7 @@ class AdsActivityPresenter : Presenter<IAdsActivityView>() {
         if (UserAccountModel.isLogin()) {
             TaskListModel.failAllTask()
             TaskListModel.uploadTask(object : TaskListModel.FetchTaskCallback {
-                override fun onTaskFetch(task: List<Task>) {
+                override fun onTaskFetch(task: Array<Task>) {
                     RetrofitModel.uploadTasks(task)
                 }
             })

@@ -29,9 +29,12 @@ class TaskListAdapter : BaseAdapter() {
         holder.tv_target.text = "目标时长：${task.tLength}分钟"
         if (task.tStarttime != null) {
             val calendar = Calendar.getInstance()
-            calendar.time = task.tStarttime
-            holder.tv_date.text = "${calendar.get(Calendar.YEAR)}年${calendar.get(Calendar.MONTH) + 1}月${calendar.get(Calendar.DAY_OF_MONTH)}日"
-            holder.tv_time.text = "起始时间：${calendar.get(Calendar.HOUR_OF_DAY)}:${calendar.get(Calendar.MINUTE)}"
+            val timeMills = task.tStarttime?.toLong()
+            if (timeMills != null) {
+                calendar.timeInMillis = timeMills
+                holder.tv_date.text = "${calendar.get(Calendar.YEAR)}年${calendar.get(Calendar.MONTH) + 1}月${calendar.get(Calendar.DAY_OF_MONTH)}日"
+                holder.tv_time.text = "起始时间：${calendar.get(Calendar.HOUR_OF_DAY)}:${calendar.get(Calendar.MINUTE)}"
+            }
         }
         return view
     }
@@ -54,7 +57,7 @@ class TaskListAdapter : BaseAdapter() {
     fun setData(tasks: List<Task>) {
         mTasks.clear()
         mTasks.addAll(tasks)
-        mTasks.sortWith(Comparator { task1, task2 -> (task2.tStarttime!!.time - task1.tStarttime!!.time).toInt() })
+        mTasks.sortWith(Comparator { task1, task2 -> (task2.tStarttime!!.toLong() - task1.tStarttime!!.toLong()).toInt() })
         notifyDataSetChanged()
     }
 

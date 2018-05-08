@@ -39,13 +39,13 @@ interface UserService {
                    @Query("uPicture") uPicture: String): Observable<Result<User>>
 
     @POST(URL.GET_USER_URL)
-    fun modifyHead(@Query("uid") uId: String): Observable<Result<*>>
+    fun getUser(@Query("uid") uId: String): Observable<Result<*>>
 
     @POST(URL.INSERT_TASK_URL)
     fun insertTask(@Query("tId") tId: String,
                    @Query("uId") uId: String,
                    @Query("tLength") tLength: String,
-                   @Query("StringStartTime") tStarttime: String,
+                   @Query("StringStartTime") tStarttime: String?,
                    @Query("tSuccessLength") tSuccessLength: String,
                    @Query("isSuccess") isSuccess: String): Observable<Result<*>>
 
