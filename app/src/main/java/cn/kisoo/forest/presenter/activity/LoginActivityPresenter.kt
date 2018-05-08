@@ -33,6 +33,12 @@ class LoginActivityPresenter : Presenter<ILoginActivityView>() {
         })
     }
 
+    fun finishApp() {
+        val intent = Intent(view.getContext(), AdsActivity::class.java)
+        intent.putExtra(RequestCode.REQUEST_CODE, RequestCode.CLOSE_APP)
+        view.startActivity(intent)
+    }
+
     interface LoginListener {
         fun success()
         fun fail()

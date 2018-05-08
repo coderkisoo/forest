@@ -40,4 +40,8 @@ class LoginActivity : BaseActivity<LoginActivityPresenter>(), View.OnClickListen
         }
     }
 
+    override fun onBackPressed() {
+        presenter.finishApp()
+    }
+
 }

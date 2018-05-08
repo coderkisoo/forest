@@ -19,6 +19,7 @@ class AdsActivity : BaseActivity<AdsActivityPresenter>(), IAdsActivityView {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        setIntent(intent)
         when(intent.getStringExtra(RequestCode.REQUEST_CODE)){
             RequestCode.CLOSE_APP -> presenter.closeApp()
             RequestCode.MAIN_PAGE -> presenter.goFirstPage()
