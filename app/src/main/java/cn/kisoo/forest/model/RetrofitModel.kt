@@ -31,10 +31,12 @@ object RetrofitModel {
             .create(UserService::class.java)
 
     fun uploadTasks(tasks: Array<Task>) {
-        tasks.forEach {
-            service.insertTask(it.tId.toString(), UserAccountModel.UID(), it.tLength.toString(), it.tStarttime, it.tSuccessLength.toString(), it.isSuccess.toString())
-
-        }
+//        tasks.forEach {
+//            service.insertTask(it.tId.toString(), UserAccountModel.UID(), it.tLength.toString(), it.tStarttime, it.tSuccessLength.toString(), it.isSuccess.toString())
+//                    .compose(applySchedulers())
+//                    .subscribe()
+//
+//        }
     }
 
     fun login(account: String, password: String, listener: LoginActivityPresenter.LoginListener) {

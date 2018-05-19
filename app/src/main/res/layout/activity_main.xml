@@ -5,7 +5,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008695">
+    >
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/dl_container"
@@ -23,9 +23,9 @@
                 android:layout_height="wrap_content"
                 app:navigationContentDescription="@string/option"
                 app:navigationIcon="@mipmap/option"
-                app:titleTextColor="@color/white">
+                app:titleTextColor="@color/white"
+                android:background="#008695"/>
 
-            </android.support.v7.widget.Toolbar>
 
             <FrameLayout
                 android:id="@+id/fl_content"
